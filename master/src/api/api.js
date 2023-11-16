@@ -1,7 +1,7 @@
-import axios from "axios";
-
+import axios from 'axios'
+const local = 'http://localhost:4000'
 const api = axios.create({
-  baseURL: "http://localhost:3000/api",
-});
-
-export default api;
+    baseURL: `${local}/api`,
+    withCredentials : true
+})
+export default api
