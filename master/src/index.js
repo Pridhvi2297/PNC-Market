@@ -1,5 +1,8 @@
 import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
+import { Toaster } from "react-hot-toast";
+import store from "./store";
+import { Provider } from "react-redux";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
@@ -8,9 +11,18 @@ const App = lazy(() => import("./App"));
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
-    <Suspense fallback='loading...'>
-      <App />
-    </Suspense>
+    <Provider store={store}>
+      <Suspense fallback="loading...">
+        <App />
+        <Toaster
+        toastOptions={{
+          position : 'top-right',
+          background : '#000031',
+          color : '#fcfcff'
+        }}
+        />
+      </Suspense>
+    </Provider>
   </BrowserRouter>
 );
 

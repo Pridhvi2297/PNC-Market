@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { ImGithub, ImGooglePlus2 } from "react-icons/im";
-import { BsTwitterX } from "react-icons/bs";
-import { FaSquareFacebook } from "react-icons/fa6";
+import { useDispatch, useSelector } from "react-redux";
+import { admin_login } from "../../store/Reducers/authReducer";
 
 const AdminLogin = () => {
+  const dispatch = useDispatch();
   const [state, setState] = useState({
     email: "",
     password: "",
@@ -12,22 +11,26 @@ const AdminLogin = () => {
   const inputHandle = (e) => {
     setState({
       ...state,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
   const submit = (e) => {
     e.preventDefault();
-    console.log(state);
+    dispatch(admin_login(state));
   };
 
   return (
     <div className="min-w-screen min-h-screen bg-[#111729] flex justify-center items-center">
       <div className="w-[350px] text-[#e2e4e8] p-2">
         <div className="bg-[#283046] p-4 rounded-md">
-            <div className="h-[70px] flex justify-center items-center">
-            <img className="w-[60%] h-full" src="/images/logo.png" alt="Pnc Mart" />
-            </div>
+          <div className="h-[70px] flex justify-center items-center">
+            <img
+              className="w-[60%] h-full"
+              src="/images/logo.png"
+              alt="Pnc Mart"
+            />
+          </div>
           <form onSubmit={submit}>
             <div className="flex flex-col w-full gap-1 mb-3 py-3">
               <label htmlFor="email">Email</label>
