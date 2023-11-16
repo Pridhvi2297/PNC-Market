@@ -4,7 +4,7 @@ import { ImGithub, ImGooglePlus2 } from "react-icons/im";
 import { BsTwitterX } from "react-icons/bs";
 import { FaSquareFacebook } from "react-icons/fa6";
 
-const Register = () => {
+const Login = () => {
   const [state, setState] = useState({
     email: "",
     password: "",
@@ -55,7 +55,7 @@ const Register = () => {
               />
             </div>
             <button className="bg-blue-500 w-full hover:shadow-blue-500/50 hover:shadow-lg text-white rounded-md px-7 py-2 mb-3">
-              Login In
+              Login
             </button>
             <div className="flex items-center mb-3 gap-3 justify-center">
               <p>
@@ -98,4 +98,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default Login;
