@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { BiLogInCircle, BiMenu } from "react-icons/bi";
+import { BiMenu } from "react-icons/bi";
 import { useDispatch } from "react-redux";
 import { getNavs } from "../navigation/index";
+import { RiLogoutBoxFill } from "react-icons/ri";
 
 const Sidebar = ({ showSidebar, setShowSidebar }) => {
   const dispatch = useDispatch();
@@ -12,7 +13,7 @@ const Sidebar = ({ showSidebar, setShowSidebar }) => {
   const { userInfo } = useSelector((state) => state.auth);
 
   useEffect(() => {
-    const navs = getNavs("admin");
+    const navs = getNavs("seller");
     setAllNav(navs);
   }, []);
 
@@ -58,10 +59,10 @@ const Sidebar = ({ showSidebar, setShowSidebar }) => {
             <li>
               <button
                 className="text-[#d0d2d6] font-normal duration-200 px-[12px] py-[9px] rounded-sm flex justify-start items-center gap-[12px] hover:pl-4 transition-all w-full mb-1 "
-                onClick={() => setShowSidebar(false)} // Close sidebar on button click
+                onClick={() => setShowSidebar(false)}
               >
                 <span>
-                  <BiLogInCircle />
+                  <RiLogoutBoxFill size={30} color="yellow" />
                 </span>
                 <span>Logout</span>
               </button>
