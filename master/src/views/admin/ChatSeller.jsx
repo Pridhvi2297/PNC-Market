@@ -44,7 +44,7 @@ const ChatSeller = () => {
               show ? "-left-[16px]" : "-left-[336px]"
             } md:left-0 md:relative transition-all`}
           >
-            <div className="w-full h-[calc(100vh-177px)] bg-[#252b3b] md:bg-transparent overflow-y-auto">
+            <div className="w-full h-[calc(100vh-177px)] bg-black md:bg-transparent overflow-y-auto">
               <div className="flex text-xl justify-between items-center p-4 md:p-0 md:px-3 md:pb-3 text-white">
                 <h2>Sellers</h2>
                 <span
@@ -114,7 +114,7 @@ const ChatSeller = () => {
                       />
                     </div>
                     <div className="flex justify-center items-start flex-col w-full bg-orange-500 shadow-lg shadow-orange-500/50 text-white py-1 px-2 rounded-sm">
-                      <span>Hello</span>
+                      <span>Hello how are you doing how everything going on</span>
                     </div>
                   </div>
                 </div>

@@ -51,7 +51,7 @@ const Orders = () => {
                 <div className="py-4 w-[18%]">Paid</div>
                 <div className="py-4 w-[18%]">In Transist</div>
                 <div className="py-4 w-[18%]">
-                  <Link to={`/admin/dashboard/order`}>view</Link>
+                  <Link to={`/admin/dashboard/order/details/1`}>view</Link>
                 </div>
                 <div
                   onClick={(e) => setShow(!show)}
