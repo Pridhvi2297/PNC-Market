@@ -19,7 +19,7 @@ const SellerDetails = () => {
             <div className="w-3/12 flex justify-center items-center py-3">
               <div>
                 <img
-                  className="w-full h-[230px]"
+                  className="w-[230px] h-[230px]"
                   src="/images/admin.png"
                   alt=""
                 />
