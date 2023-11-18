@@ -8,7 +8,7 @@ const Orders = lazy(() => import("../../views/seller/Orders"));
 const Payments = lazy(() => import("../../views/seller/Payments"));
 const SellerToAdmin = lazy(() => import("../../views/seller/SellerToAdmin"));
 const SellerToCustomer = lazy(() => import("../../views/seller/SellerToCustomer"));
-
+const Profile = lazy(() => import("../../views/seller/Profile"));
 
 export const sellerRoutes = [
     {
@@ -53,7 +53,7 @@ export const sellerRoutes = [
         status: 'active'
     },
     {
-        path: '/seller/dashboard/chat-customer/', //:customerId
+        path: '/seller/dashboard/chat-customer/',
         element: <SellerToCustomer />,
         role: 'seller',
         status: 'active'
@@ -64,5 +64,11 @@ export const sellerRoutes = [
         role: 'seller',
         visibility: ['active', 'deactive', 'pending']
     },
+    {
+        path: '/seller/dashboard/profile',
+        element: <Profile />,
+        role: 'seller',
+        visibility: ['active', 'deactive', 'pending']
+    }
 
 ]
