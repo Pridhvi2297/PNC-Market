@@ -1,8 +1,10 @@
 const adminModel = require("../models/adminModel");
 const { responseReturn } = require("../utiles/response");
-const bcrypt = require("bcrypt");
+const bcrypt = require('bcrypt');
 const jwt = require("jsonwebtoken");
 const { createToken } = require("../utiles/tokenCreate");
+const sellerModel = require('../models/sellerModel')
+const sellerCustomerModel = require('../models/chat/sellerCustomerModel')
 
 class AuthControllers {
   async admin_login(req, res) {
@@ -29,6 +31,34 @@ class AuthControllers {
     } catch (error) {
       responseReturn(res, 500, { error: error.message });
     }
+  }
+
+  seller_register = async (req, res) => {
+      const { email, name, password } = req.body
+      try {
+          const getUser = await sellerModel.findOne({ email })
+          if (getUser) {
+              responseReturn(res, 404, { error: 'Email alrady exit' })
+          } else {
+              const seller = await sellerModel.create({
+                  name,
+                  email,
+                  password: await bcrypt.hash(password, 10),
+                  method: 'manually',
+                  shopInfo: {}
+              })
+              await sellerCustomerModel.create({
+                  myId: seller.id
+              })
+              const token = await createToken({ id: seller.id, role: seller.role })
+              res.cookie('accessToken', token, {
+                  expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
+              })
+              responseReturn(res, 201, { token, message: 'register success' })
+          }
+      } catch (error) {
+          responseReturn(res, 500, { error: 'Internal server error' })
+      }
   }
 
   async getUser(req, res) {
