@@ -36,14 +36,14 @@ const Register = () => {
     if (successMessage) {
       toast.success(successMessage);
       dispatch(messageClear());
+      navigate("/");
     }
     if (errorMessage) {
       toast.error(errorMessage);
       dispatch(messageClear());
     }
-    if (userInfo) {
-      navigate("/");
-    }
+    // if (userInfo) {
+    // }
   }, [successMessage, errorMessage]);
 
   return (

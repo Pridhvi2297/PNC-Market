@@ -11,11 +11,13 @@ const Sidebar = ({ showSidebar, setShowSidebar }) => {
   const { pathname } = useLocation();
   const [allNav, setAllNav] = useState([]);
   const { userInfo } = useSelector((state) => state.auth);
+  const { role } = useSelector(state => state.auth)
+
 
   useEffect(() => {
-    const navs = getNavs("seller");
-    setAllNav(navs);
-  }, []);
+    const navs = getNavs(role)
+    setAllNav(navs)
+  }, [role])
 
   const toggleSidebar = () => {
     setShowSidebar(!showSidebar);
