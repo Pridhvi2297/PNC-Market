@@ -4,7 +4,7 @@ import { FaList } from "react-icons/fa";
 import { useParams, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { BsEmojiSmile } from "react-icons/bs";
-import { socket } from "../../utils/utils";
+import { overrideStyle } from "../../utils/utils";
 
 const ChatSeller = () => {
   const scrollRef = useRef();
@@ -18,7 +18,7 @@ const ChatSeller = () => {
   const [text, setText] = useState("");
 
   useEffect(() => {
-    socket.on("received_seller_message", (msg) => {
+    overrideStyle.on("received_seller_message", (msg) => {
       setReceivedMessage(msg);
     });
   }, []);
@@ -30,7 +30,7 @@ const ChatSeller = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (text.trim() !== "") {
-      socket.emit("send_seller_message", { sellerId, message: text });
+      overrideStyle.emit("send_seller_message", { sellerId, message: text });
       setText("");
     }
   };

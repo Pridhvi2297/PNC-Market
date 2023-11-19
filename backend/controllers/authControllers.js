@@ -4,8 +4,8 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { createToken } = require("../utiles/tokenCreate");
 
-class authControllers {
-  admin_login = async (req, res) => {
+class AuthControllers {
+  async admin_login(req, res) {
     const { email, password } = req.body;
     try {
       const admin = await adminModel.findOne({ email }).select("+password");
@@ -29,22 +29,22 @@ class authControllers {
     } catch (error) {
       responseReturn(res, 500, { error: error.message });
     }
-  };
+  }
+
+  async getUser(req, res) {
+    const { id, role } = req;
+
+    try {
+      if (role === "admin") {
+        const user = await adminModel.findById(id);
+        responseReturn(res, 200, { userInfo: user });
+      } else {
+        console.log('seller Info');
+      }
+    } catch (error) {
+      responseReturn(res, 500, { error: "Internal server error" });
+    }
+  }
 }
 
-getUser = async (req, res) => {
-  const { id, role } = req;
-
-  try {
-    if (role === "admin") {
-      const user = await adminModel.findById(id);
-      responseReturn(res, 200, { userInfo: user });
-    } else {
-      console.log('seller Info')
-    }
-  } catch (error) {
-    responseReturn(res, 500, { error: "Internal server error" });
-  }
-};
-
-module.exports = new authControllers();
+module.exports = new AuthControllers();
