@@ -5,26 +5,17 @@ import { PropagateLoader } from 'react-spinners'
 import toast from 'react-hot-toast'
 import { overrideStyle } from '../../utils/utils'
 const EditProduct = () => {
-
+    const { productId } = useParams()
     const dispatch = useDispatch()
-
-    const categorys = [
-        {
-            id: 1,
-            name: 'Mobile'
-        },
-        {
-            id:2,
-            name: 'Shoes'
-        },
-        {
-            id: 3,
-            name: 'cloths'
-        }
-    ]
-
-    const loader = false;
-
+    const { categorys } = useSelector(state => state.category)
+    const { product, loader, errorMessage, successMessage } = useSelector(state => state.product)
+    useEffect(() => {
+        dispatch(get_category({
+            searchValue: '',
+            parPage: '',
+            page: ""
+        }))
+    }, [])
     const [state, setState] = useState({
         name: "",
         description: '',
@@ -40,12 +31,14 @@ const EditProduct = () => {
         })
     }
 
+    useEffect(() => {
+        dispatch(get_product(productId))
+    }, [productId])
+
     const [cateShow, setCateShow] = useState(false)
     const [category, setCategory] = useState('')
     const [allCategory, setAllCategory] = useState([])
     const [searchValue, setSearchValue] = useState('')
-    const [images, setImages] = useState([])
-
     const categorySearch = (e) => {
         const value = e.target.value
         setSearchValue(value)
@@ -58,40 +51,59 @@ const EditProduct = () => {
     }
     const [imageShow, setImageShow] = useState([])
 
-
     const changeImage = (img, files) => {
-        if(files.length>0){
-            console.log(img)
-            console.log(files[0])
+        if (files.length > 0) {
+            dispatch(product_image_update({
+                oldImage: img,
+                newImage: files[0],
+                productId
+            }))
         }
     }
 
-
+    useEffect(() => {
+        setState({
+            name: product.name,
+            description: product.description,
+            discount: product.discount,
+            price: product.price,
+            brand: product.brand,
+            stock: product.stock
+        })
+        setCategory(product.category)
+        setImageShow(product.images)
+    }, [product])
     useEffect(() => {
         if (categorys.length > 0) {
             setAllCategory(categorys)
         }
     }, [categorys])
 
-    const update = (e) => {
-      };
+    useEffect(() => {
+        if (errorMessage) {
+            toast.error(errorMessage)
+            dispatch(messageClear())
+        }
+        if (successMessage) {
+            toast.success(successMessage)
+            dispatch(messageClear())
+        }
+    }, [successMessage, errorMessage])
 
-    useEffect((e) => {
-        setState({
-            name: "Iphone",
-            description: "Testhjblk",
-            discount: 10,
-            price: 2000,
-            brand: "apple",
-            stock: 20,
-            productId: 657489076
-        })
-        setCategory('Mobile')
-        setImageShow([
-            '/images/seller.png',
-            '/images/admin.png'
-        ])
-    })
+    const update = (e) => {
+        e.preventDefault()
+        const obj = {
+            name: state.name,
+            description: state.description,
+            discount: state.discount,
+            price: state.price,
+            brand: state.brand,
+            stock: state.stock,
+            productId: productId
+        }
+        console.log(obj)
+        dispatch(update_product(obj))
+    }
     return (
         <div className='px-2 lg:px-7 pt-5 '>
             <div className='w-full p-4  bg-[#283046] rounded-md'>
