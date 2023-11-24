@@ -179,8 +179,8 @@ const AddProduct = () => {
                                 <input className='px-4 py-2 focus:border-indigo-500 outline-none bg-black border border-slate-700 rounded-md text-white' onChange={inputHandle} value={state.price} type="number" placeholder='price' name='price' id='price' />
                             </div>
                             <div className='flex flex-col w-full gap-1'>
-                                <label htmlFor="discount">Discount ( If no discount enter 0*)</label>
-                                <input min='0' className='px-4 py-2 focus:border-indigo-500 outline-none bg-black border border-slate-700 rounded-md text-white' onChange={inputHandle} value={state.discount} type="number" placeholder='discount%' name='discount' id='discount'></input>
+                                <label htmlFor="discount">Discount (Minimum 0*)</label>
+                                <input min='0' className='px-4 py-2 focus:border-indigo-500 outline-none bg-black border border-slate-700 rounded-md text-white' onChange={inputHandle} value={state.discount} type="number" placeholder='discount%' name='discount' id='discount' />
                             </div>
                         </div>
                         <div className='flex flex-col w-full gap-1 text-white mb-5'>
@@ -199,7 +199,7 @@ const AddProduct = () => {
                                 )
                             }
                             <label className='flex justify-center items-center flex-col h-[180px] cursor-pointer border border-dashed hover:border-indigo-500 w-full text-white' htmlFor="image">
-                            <span className='flex justify-center text-[#fc0320]'>Minimum 2 images are mandatory*</span>
+                                <span className='flex justify-center text-[#fc0320]'>Minimum 2 Images Required*</span>
                                 <span><BsImages /></span>
                                 <span>select image</span>
                             </label>
