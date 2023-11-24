@@ -47,9 +47,9 @@ const Register = () => {
   }, [successMessage, errorMessage]);
 
   return (
-    <div className="min-w-screen min-h-screen bg-[#111729] flex justify-center items-center">
-      <div className="w-[350px] text-[#e2e4e8] p-2">
-        <div className="bg-[#283046] p-4 rounded-md">
+    <div className="min-w-screen min-h-screen bg-black flex justify-center items-center">
+      <div className="w-[350px] text-black p-2">
+        <div className="bg-white p-4 rounded-md">
           <h2 className="text-xl mb-3 text-center">PNC Marketplace</h2>
           <div className="flex items-center justify-center">
             <p className="text-sm mb-3">Start selling with us</p>
@@ -61,7 +61,7 @@ const Register = () => {
               <input
                 onChange={inputHandle}
                 value={state.name}
-                className="px-3 py-2 outline-none border border-slate-200 bg-transparent rounded-md text-[#e2e4e8] focus:border-indigo-500 overflow-hidden"
+                className="px-3 py-2 outline-none border border-slate-200 bg-transparent rounded-md text-white focus:border-indigo-500 overflow-hidden"
                 type="text"
                 name="name"
                 placeholder="Full Name"
@@ -74,7 +74,7 @@ const Register = () => {
               <input
                 onChange={inputHandle}
                 value={state.email}
-                className="px-3 py-2 outline-none border border-slate-200 bg-transparent rounded-md text-[#e2e4e8] focus:border-indigo-500 overflow-hidden"
+                className="px-3 py-2 outline-none border border-slate-200 bg-transparent rounded-md text-white focus:border-indigo-500 overflow-hidden"
                 type="email"
                 name="email"
                 placeholder="email"
@@ -87,7 +87,7 @@ const Register = () => {
               <input
                 onChange={inputHandle}
                 value={state.password}
-                className="px-3 py-2 outline-none border border-slate-200 bg-transparent rounded-md text-[#e2e4e8] focus:border-indigo-500 overflow-hidden"
+                className="px-3 py-2 outline-none border border-slate-200 bg-transparent rounded-md text-white focus:border-indigo-500 overflow-hidden"
                 type="password"
                 name="password"
                 placeholder="Password"

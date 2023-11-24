@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useParams, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { PropagateLoader } from 'react-spinners'
 import toast from 'react-hot-toast'
@@ -7,6 +7,7 @@ import { get_category } from '../../store/Reducers/categoryReducer'
 import { get_product, messageClear, update_product,product_image_update } from '../../store/Reducers/productReducer'
 import { overrideStyle } from '../../utils/utils'
 const EditProduct = () => {
+    const navigate = useNavigate()
     const { productId } = useParams()
     const dispatch = useDispatch()
     const { categorys } = useSelector(state => state.category)
@@ -89,6 +90,7 @@ const EditProduct = () => {
         if (successMessage) {
             toast.success(successMessage)
             dispatch(messageClear())
+            navigate('/seller/dashboard/products')
         }
     }, [successMessage, errorMessage])
 

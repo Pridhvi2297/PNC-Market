@@ -49,9 +49,9 @@ const AdminLogin = () => {
   }, [errorMessage, successMessage]);
 
   return (
-    <div className="min-w-screen min-h-screen bg-[#111729] flex justify-center items-center">
-      <div className="w-[350px] text-[#e2e4e8] p-2">
-        <div className="bg-[#283046] p-4 rounded-md">
+    <div className="min-w-screen min-h-screen bg-black flex justify-center items-center">
+      <div className="w-[350px] text-black p-2">
+        <div className="bg-white p-4 rounded-md">
           <div className="h-[70px] flex justify-center items-center">
             <img
               className="w-[60%] h-full"
@@ -65,7 +65,7 @@ const AdminLogin = () => {
               <input
                 onChange={inputHandle}
                 value={state.email}
-                className="px-3 py-2 outline-none border border-slate-200 bg-transparent rounded-md text-[#e2e4e8] focus:border-indigo-500 overflow-hidden"
+                className="px-3 py-2 outline-none border border-slate-200 bg-transparent rounded-md text-white focus:border-indigo-500 overflow-hidden"
                 type="email"
                 name="email"
                 placeholder="email"
@@ -78,7 +78,7 @@ const AdminLogin = () => {
               <input
                 onChange={inputHandle}
                 value={state.password}
-                className="px-3 py-2 outline-none border border-slate-200 bg-transparent rounded-md text-[#e2e4e8] focus:border-indigo-500 overflow-hidden"
+                className="px-3 py-2 outline-none border border-slate-200 bg-transparent rounded-md text-white focus:border-indigo-500 overflow-hidden"
                 type="password"
                 name="password"
                 placeholder="Password"
