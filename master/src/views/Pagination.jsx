@@ -33,7 +33,7 @@ const Pagination = ({
           className={`
             ${
               pageNumber === i
-                ? "bg-white shadow-lg shadow-indigo-500/50 text-black"
+                ? "bg-slate-700 shadow-lg shadow-indigo-500/50 text-black"
                 : "bg-slate-700 hover:bg-black shadow-lg hover:shadow-indigo-500/50 hover:text-white text-[#d0d2d6]"
             } w-[30px] h-[30px] rounded-full flex justify-center items-center cursor-pointer`}
         >
