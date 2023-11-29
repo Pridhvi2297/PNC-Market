@@ -18,6 +18,11 @@ const Login = () => {
       [e.target.name]: e.target.value,
     });
   };
+
+  const login = (e) => {
+    e.preventDefault()
+    console.log(state)
+}
   const loader = false;
 
   return (
@@ -38,7 +43,7 @@ const Login = () => {
                 Sign in
               </h2>
               <div>
-                <form className="text-slate-600">
+                <form onSubmit={login} className="text-slate-600">
                   <div className="flex flex-col gap-1 mb-2">
                     <label htmlFor="email">Email</label>
                     <input

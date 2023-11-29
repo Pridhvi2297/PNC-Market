@@ -20,6 +20,11 @@ const Register = () => {
       [e.target.name]: e.target.value,
     });
   };
+
+  const register = (e) => {
+    e.preventDefault()
+    console.log(state)
+}
   const loader = false;
 
   return (
@@ -39,7 +44,7 @@ const Register = () => {
                 Create account
               </h2>
               <div>
-                <form className="text-slate-600">
+                <form onSubmit={register} className="text-slate-600">
                   <div className="flex flex-col gap-1 mb-2">
                     <label htmlFor="name">Full Name</label>
                     <input

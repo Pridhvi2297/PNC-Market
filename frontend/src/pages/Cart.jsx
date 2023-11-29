@@ -1,10 +1,21 @@
 import React from "react";
 import Headers from "../components/Headers";
 import Footer from "../components/Footer";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 
 const Cart = () => {
+  const navigate = useNavigate();
+  const redirect = () => {
+    navigate("/shipping", {
+      state: {
+        products: [],
+        price: 2400,
+        shipping_fee: 12,
+        items: 4,
+      },
+    });
+  };
   const card_products = [1, 2, 3];
   const outofstock_products = [1, 2];
 
@@ -162,7 +173,10 @@ const Cart = () => {
                         <span>Total</span>
                         <span className="text-lg text-orange-500">$2415</span>
                       </div>
-                      <button className="px-5 py-[6px] rounded-sm hover:shadow-orange-500/20 hover:shadow-lg bg-orange-500 text-sm text-white uppercase">
+                      <button
+                        onClick={redirect}
+                        className="px-5 py-[6px] rounded-sm hover:shadow-orange-500/20 hover:shadow-lg bg-orange-500 text-sm text-white uppercase"
+                      >
                         Proceed to checkout 3
                       </button>
                     </div>
