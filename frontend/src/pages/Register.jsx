@@ -13,6 +13,13 @@ const Register = () => {
     email: "",
     password: "",
   });
+
+  const inputHandle = (e) => {
+    setState({
+      ...state,
+      [e.target.name]: e.target.value,
+    });
+  };
   const loader = false;
 
   return (
@@ -29,43 +36,46 @@ const Register = () => {
           <div className="grid grid-cols-2 w-[60%] mx-auto bg-white rounded-md">
             <div className="px-8 py-8">
               <h2 className="text-center w-full text-xl text-slate-600 font-bold">
-                Register
+                Create account
               </h2>
               <div>
                 <form className="text-slate-600">
                   <div className="flex flex-col gap-1 mb-2">
-                    <label htmlFor="name">Name</label>
+                    <label htmlFor="name">Full Name</label>
                     <input
+                      onChange={inputHandle}
                       value={state.name}
                       type="text"
                       className="w-full px-3 py-2 border border-slate-200 outline-none focus:border-indigo-500 rounded-md"
                       id="name"
                       name="name"
-                      placeholder="name"
+                      placeholder="Full Name"
                       required
                     />
                   </div>
                   <div className="flex flex-col gap-1 mb-2">
                     <label htmlFor="email">Email</label>
                     <input
+                      onChange={inputHandle}
                       value={state.email}
                       type="email"
                       className="w-full px-3 py-2 border border-slate-200 outline-none focus:border-indigo-500 rounded-md"
                       id="email"
                       name="email"
-                      placeholder="email"
+                      placeholder="Email"
                       required
                     />
                   </div>
                   <div className="flex flex-col gap-1 mb-4">
                     <label htmlFor="password">Passoword</label>
                     <input
+                      onChange={inputHandle}
                       value={state.password}
                       type="password"
                       className="w-full px-3 py-2 border border-slate-200 outline-none focus:border-indigo-500 rounded-md"
                       id="password"
                       name="password"
-                      placeholder="password"
+                      placeholder="Password"
                       required
                     />
                   </div>
@@ -94,7 +104,10 @@ const Register = () => {
               <div className="text-center text-slate-600 pt-1">
                 <p>
                   Already have an account?{" "}
-                  <Link className="text-blue-500 flex items-center justify-center" to="/login">
+                  <Link
+                    className="text-blue-500 flex items-center justify-center"
+                    to="/login"
+                  >
                     Sign in <FaArrowRightFromBracket className="ml-1" />
                   </Link>
                 </p>

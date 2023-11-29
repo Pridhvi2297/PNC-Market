@@ -12,6 +12,12 @@ const Login = () => {
     email: "",
     password: "",
   });
+  const inputHandle = (e) => {
+    setState({
+      ...state,
+      [e.target.name]: e.target.value,
+    });
+  };
   const loader = false;
 
   return (
@@ -29,30 +35,32 @@ const Login = () => {
           <div className="grid grid-cols-2 w-[60%] mx-auto bg-white rounded-md">
             <div className="px-8 py-8">
               <h2 className="text-center w-full text-xl text-slate-600 font-bold">
-                Login
+                Sign in
               </h2>
               <div>
                 <form className="text-slate-600">
                   <div className="flex flex-col gap-1 mb-2">
                     <label htmlFor="email">Email</label>
                     <input
+                      onChange={inputHandle}
                       value={state.email}
                       type="email"
                       className="w-full px-3 py-2 border border-slate-200 outline-none focus:border-indigo-500 rounded-md"
                       id="email"
                       name="email"
-                      placeholder="email"
+                      placeholder="Email"
                     />
                   </div>
                   <div className="flex flex-col gap-1 mb-4">
                     <label htmlFor="password">Passoword</label>
                     <input
+                      onChange={inputHandle}
                       value={state.password}
                       type="password"
                       className="w-full px-3 py-2 border border-slate-200 outline-none focus:border-indigo-500 rounded-md"
                       id="password"
                       name="password"
-                      placeholder="password"
+                      placeholder="Password"
                     />
                   </div>
                   <button className="px-8 w-full py-2 bg-purple-500 shadow-lg hover:shadow-indigo-500/30 text-white rounded-md">
