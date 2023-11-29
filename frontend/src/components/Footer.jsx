@@ -12,8 +12,8 @@ import {
 import { footerProductLinks, footerSupportLinks } from "../data/data";
 
 const Footer = () => {
-  const card_product_count = true;
-  const wishlist_count = true;
+  const card_product_count = 10;
+  const wishlist_count = 15;
   const userInfo = true;
   const navigate = useNavigate();
 

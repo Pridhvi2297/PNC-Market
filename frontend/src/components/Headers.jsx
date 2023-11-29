@@ -25,8 +25,8 @@ const Headers = () => {
   const [category, setCategory] = useState("");
   const user = true;
   const navigate = useNavigate();
-  const wishlist_count = 0;
-  const card_product_count = 0;
+  const wishlist_count = 7;
+  const card_product_count = 10;
   const categorys = useState("");
   const search = () => {
     navigate(`/products/search?category=${category}&&value=${searchValue}`);
