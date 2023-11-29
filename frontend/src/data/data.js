@@ -19,27 +19,10 @@
     },
   ];
   
-  export const footercompanyLinks = [
-    {
-      name: "Game & Video",
-    },
-    {
-      name: "Phone &Tablets",
-    },
-    {
-      name: "Computers & Laptop",
-    },
-    {
-      name: "Sport Watches",
-    },
-    {
-      name: "Today's Deals",
-    },
-  ];
-  
   export const footerSupportLinks = [
     {
       name: "FAQ",
+      link: "/faq"
     },
     {
       name: "Reviews",

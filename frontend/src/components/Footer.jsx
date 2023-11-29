@@ -1,6 +1,5 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { FaFacebookF, FaLinkedin } from "react-icons/fa";
 import {
   AiFillGithub,
   AiOutlineTwitter,
@@ -10,11 +9,7 @@ import {
   AiFillInstagram,
   AiFillYoutube,
 } from "react-icons/ai";
-import {
-  footerProductLinks,
-  footerSupportLinks,
-  footercompanyLinks,
-} from "../data/data";
+import { footerProductLinks, footerSupportLinks } from "../data/data";
 
 const Footer = () => {
   const card_product_count = true;
@@ -30,7 +25,7 @@ const Footer = () => {
             <img
               className="w-72 h-[5.5rem] mb-6"
               src="/images/logo.png"
-              alt="logo"
+              alt="Company Logo"
             />
             <p className="text-white text-sm mb-6">
               Get the best products that bring happiness to your life.
@@ -119,7 +114,7 @@ const Footer = () => {
           <div className="flex justify-center space-x-4">
             <img
               src="https://help.zazzle.com/hc/article_attachments/360010513393/Logos-01.png"
-              alt=""
+              alt="Payment Methods"
               className="w-[20%] h-[10%]"
             />
           </div>
