@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { FcFeedback } from "react-icons/fc";
 import { ImGithub, ImGooglePlus2 } from "react-icons/im";
 import { BsTwitterX } from "react-icons/bs";
@@ -18,16 +19,17 @@ import {
 } from "react-icons/fc";
 
 const Headers = () => {
+  const navigate = useNavigate();
   const { pathname } = useLocation();
+  const { categorys } = useSelector((state) => state.home);
   const [showShidebar, setShowShidebar] = useState(true);
   const [categoryShow, setCategoryShow] = useState(true);
   const [searchValue, setSearchValue] = useState("");
   const [category, setCategory] = useState("");
   const user = true;
-  const navigate = useNavigate();
   const wishlist_count = 7;
   const card_product_count = 10;
-  const categorys = useState("");
+
   const search = () => {
     navigate(`/products/search?category=${category}&&value=${searchValue}`);
   };
@@ -413,7 +415,7 @@ const Headers = () => {
                       >
                         <img
                           src={c.image}
-                          className="w-[30px] h-[30px] rounded-full overflow-hidden"
+                          className="w-[30px] h-[30px] overflow-hidden"
                           alt={c.name}
                         />
                         <Link

@@ -61,7 +61,7 @@ const Register = () => {
               <input
                 onChange={inputHandle}
                 value={state.name}
-                className="px-3 py-2 outline-none border border-slate-200 bg-transparent rounded-md text-white focus:border-indigo-500 overflow-hidden"
+                className="px-3 py-2 outline-none border border-slate-200 bg-transparent rounded-md text-black focus:border-indigo-500 overflow-hidden"
                 type="text"
                 name="name"
                 placeholder="Full Name"
@@ -74,7 +74,7 @@ const Register = () => {
               <input
                 onChange={inputHandle}
                 value={state.email}
-                className="px-3 py-2 outline-none border border-slate-200 bg-transparent rounded-md text-white focus:border-indigo-500 overflow-hidden"
+                className="px-3 py-2 outline-none border border-slate-200 bg-transparent rounded-md text-black focus:border-indigo-500 overflow-hidden"
                 type="email"
                 name="email"
                 placeholder="email"
@@ -87,7 +87,7 @@ const Register = () => {
               <input
                 onChange={inputHandle}
                 value={state.password}
-                className="px-3 py-2 outline-none border border-slate-200 bg-transparent rounded-md text-white focus:border-indigo-500 overflow-hidden"
+                className="px-3 py-2 outline-none border border-slate-200 bg-transparent rounded-md text-black focus:border-indigo-500 overflow-hidden"
                 type="password"
                 name="password"
                 placeholder="Password"
@@ -107,7 +107,7 @@ const Register = () => {
             </div>
             <button
               disabled={loader ? true : false}
-              className="bg-blue-500 w-full hover:shadow-blue-500/50 hover:shadow-lg text-white rounded-md px-7 py-2 mb-3"
+              className="bg-blue-500 w-full hover:shadow-blue-500/50 hover:shadow-lg text-black rounded-md px-7 py-2 mb-3"
             >
               {loader ? (
                 <PropagateLoader color="#fff" cssOverride={overrideStyle} />
