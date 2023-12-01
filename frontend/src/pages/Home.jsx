@@ -19,16 +19,15 @@ const Home = () => {
   } = useSelector((state) => state.home);
 
   useEffect(() => {
-    dispatch(get_category());
     dispatch(get_products());
   }, []);
 
   return (
     <div className="w-full">
-      <Heders categorys={categorys} />
+      <Heders />
       <Banner />
       <div className="my-4">
-        <Categorys categorys={categorys} />
+        <Categorys />
       </div>
       <div className="py-[45px]">
         <FeatureProducts products={products} />

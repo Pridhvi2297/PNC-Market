@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Headers from "../components/Headers";
 import { Range } from "react-range";
 import Footer from "../components/Footer";
@@ -11,43 +11,67 @@ import Products from "../components/products/Products";
 import { FaThList } from "react-icons/fa";
 import ShopProducts from "../components/products/ShopProducts";
 import Pagination from "../components/Pagination";
-
-const products = [
-  {
-    id: 1,
-    name: "Men's Shoes",
-    price: 1000,
-  },
-  {
-    id: 2,
-    name: "Men's Shoes",
-    price: 1000,
-  },
-];
+import { useDispatch, useSelector } from "react-redux";
+import { price_range_product, query_products } from "../store/reducers/homeReducer";
 
 const Shops = () => {
-  const categorys = [
-    "Clothing",
-    "Shoes",
-    "Watches",
-    "Bags",
-    "Jewelry",
-    "Beauty",
-    "Furniture",
-    "Home",
-    "Sports",
-  ];
+  const { products, totalProduct, latest_product, categorys, priceRange } = useSelector(
+    (state) => state.home
+  );
 
+  const dispatch = useDispatch();
   const [filter, setFilter] = useState(true);
-  const [state, setState] = useState({ values: [50, 2000] });
+  const [state, setState] = useState({
+    values: [priceRange.low, priceRange.high],
+  });
   const [rating, setRatingQ] = useState("");
   const [sortPrice, setSortPrice] = useState("");
   const [styles, setStyles] = useState("grid");
   const [pageNumber, setPageNumber] = useState(1);
-  const [parPage, serParPage] = useState(3);
+  const [perPage, setPerPage] = useState(3);
+  const [category, setCategory] = useState("");
 
-  const resetRating = useState("");
-  const totalProduct = 20;
+  useEffect(() => {
+    dispatch(price_range_product());
+  }, []);
+
+  useEffect(() => {
+    setState({
+      values: [priceRange.low, priceRange.high],
+    });
+  }, [priceRange]);
+
+  const queryCategoey = (e, value) => {
+    if (e.target.checked) {
+      setCategory(value);
+    } else {
+      setCategory("");
+    }
+  };
+  useEffect(() => {
+    dispatch(
+        query_products({
+            low: state.values[0],
+            high: state.values[1],
+            category,
+            rating,
+            sortPrice,
+            pageNumber
+        })
+    )
+}, [state.values[0], state.values[1], category, rating, pageNumber, sortPrice])
+
+const resetRating = () => {
+    setRatingQ('')
+    dispatch(query_products({
+        low: state.values[0],
+        high: state.values[1],
+        category,
+        rating: '',
+        sortPrice,
+        pageNumber
+    }))
+}
 
   return (
     <div>
@@ -99,12 +123,17 @@ const Shops = () => {
                     className="flex justify-start items-center gap-2 py-1"
                     key={i}
                   >
-                    <input type="checkbox" id={c} />
+                    <input
+                      checked={category === c.name ? true : false}
+                      onChange={(e) => queryCategoey(e, c.name)}
+                      type="checkbox"
+                      id={c.name}
+                    />
                     <label
                       className="text-slate-600 block cursor-pointer"
-                      htmlFor={c}
+                      htmlFor={c.name}
                     >
-                      {c}
+                      {c.name}
                     </label>
                   </div>
                 ))}
@@ -115,8 +144,8 @@ const Shops = () => {
                 </h2>
                 <Range
                   step={5}
-                  min={50}
-                  max={2000}
+                  min={priceRange.low}
+                  max={priceRange.high}
                   values={state.values}
                   onChange={(values) => setState({ values })}
                   renderTrack={({ props, children }) => (
@@ -269,7 +298,10 @@ const Shops = () => {
                   </div>
 
                   <div className="py-5 flex flex-col gap-4 md:hidden">
-                    <Products title="Latest Products" />
+                    <Products
+                      title="Latest Products"
+                      products={latest_product}
+                    />
                   </div>
                 </div>
               </div>
@@ -278,7 +310,7 @@ const Shops = () => {
               <div className="pl-8 md:pl-0">
                 <div className="py-4 bg-white mb-10 px-3 rounded-md flex justify-between items-start border">
                   <h2 className="text-lg font-medium text-slate-600">
-                    20 Products
+                  {totalProduct} Products
                   </h2>
                   <div className="flex justify-center items-center gap-3">
                     <select
@@ -315,13 +347,13 @@ const Shops = () => {
                   <ShopProducts products={products} styles={styles} />
                 </div>
                 <div>
-                  {totalProduct > parPage && (
+                  {totalProduct > perPage && (
                     <Pagination
                       pageNumber={pageNumber}
                       setPageNumber={setPageNumber}
                       totalItem={totalProduct}
-                      parPage={parPage}
-                      showItem={Math.floor(totalProduct / parPage)}
+                      perPage={perPage}
+                      showItem={Math.floor(totalProduct / perPage)}
                     />
                   )}
                 </div>
