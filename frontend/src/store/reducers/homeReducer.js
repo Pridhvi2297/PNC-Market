@@ -60,6 +60,7 @@ export const homeReducer = createSlice({
     categorys: [],
     products: [],
     totalProduct: 0,
+    perPage: 4,
     latest_product: [],
     topRated_product: [],
     discount_product: [],
@@ -88,7 +89,7 @@ export const homeReducer = createSlice({
     }) => {
         state.products = payload.products
         state.totalProduct = payload.totalProduct
-        state.parPage = payload.parPage
+        state.perPage = payload.perPage
     },
   },
 });

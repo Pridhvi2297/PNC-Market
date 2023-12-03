@@ -5,10 +5,10 @@ const Pagination = ({
   pageNumber,
   setPageNumber,
   totalItem,
-  parPage,
+  perPage,
   showItem,
 }) => {
-  let totalPage = Math.ceil(totalItem / parPage);
+  let totalPage = Math.ceil(totalItem / perPage);
   let startPage = pageNumber;
 
   let dif = totalPage - pageNumber;

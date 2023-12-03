@@ -15,7 +15,7 @@ const EditProduct = () => {
     useEffect(() => {
         dispatch(get_category({
             searchValue: '',
-            parPage: '',
+            perPage: '',
             page: ""
         }))
     }, [])

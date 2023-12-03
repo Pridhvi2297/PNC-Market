@@ -1,9 +1,9 @@
 import React from 'react'
 import { BsChevronDoubleLeft, BsChevronDoubleRight } from 'react-icons/bs';
 
-const Pagination = ({ pageNumber, setPageNumber, totalItem, parPage, showItem }) => {
+const Pagination = ({ pageNumber, setPageNumber, totalItem, perPage, showItem }) => {
 
-    let totalPage = Math.ceil(totalItem / parPage)
+    let totalPage = Math.ceil(totalItem / perPage)
     let startPage = pageNumber
 
     let dif = totalPage - pageNumber;

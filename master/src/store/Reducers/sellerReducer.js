@@ -3,9 +3,9 @@ import api from '../../api/api'
 
 export const get_seller_request = createAsyncThunk(
     'seller/get_seller_request',
-    async ({ parPage, page, searchValue }, { rejectWithValue, fulfillWithValue }) => {
+    async ({ perPage, page, searchValue }, { rejectWithValue, fulfillWithValue }) => {
         try {
-            const { data } = await api.get(`/request-seller-get?page=${page}&&searchValue=${searchValue}&&parPage=${parPage}`, { withCredentials: true })
+            const { data } = await api.get(`/request-seller-get?page=${page}&&searchValue=${searchValue}&&perPage=${perPage}`, { withCredentials: true })
             return fulfillWithValue(data)
         } catch (error) {
             return rejectWithValue(error.response.data)
@@ -40,9 +40,9 @@ export const seller_status_update = createAsyncThunk(
 
 export const get_active_sellers = createAsyncThunk(
     'seller/get_active_sellers',
-    async ({ parPage, page, searchValue }, { rejectWithValue, fulfillWithValue }) => {
+    async ({ perPage, page, searchValue }, { rejectWithValue, fulfillWithValue }) => {
         try {
-            const { data } = await api.get(`/get-sellers?page=${page}&&searchValue=${searchValue}&&parPage=${parPage}`, { withCredentials: true })
+            const { data } = await api.get(`/get-sellers?page=${page}&&searchValue=${searchValue}&&perPage=${perPage}`, { withCredentials: true })
             return fulfillWithValue(data)
         } catch (error) {
             return rejectWithValue(error.response.data)
@@ -53,9 +53,9 @@ export const get_active_sellers = createAsyncThunk(
 
 export const get_deactive_sellers = createAsyncThunk(
     'seller/get_active_sellers',
-    async ({ parPage, page, searchValue }, { rejectWithValue, fulfillWithValue }) => {
+    async ({ perPage, page, searchValue }, { rejectWithValue, fulfillWithValue }) => {
         try {
-            const { data } = await api.get(`/get-deactive-sellers?page=${page}&&searchValue=${searchValue}&&parPage=${parPage}`, { withCredentials: true })
+            const { data } = await api.get(`/get-deactive-sellers?page=${page}&&searchValue=${searchValue}&&perPage=${perPage}`, { withCredentials: true })
             return fulfillWithValue(data)
         } catch (error) {
             return rejectWithValue(error.response.data)

@@ -50,24 +50,24 @@ class productController {
         })
     }
     products_get = async (req, res) => {
-        const { page, searchValue, parPage } = req.query
+        const { page, searchValue, perPage } = req.query
         const { id } = req;
 
-        const skipPage = parseInt(parPage) * (parseInt(page) - 1);
+        const skipPage = parseInt(perPage) * (parseInt(page) - 1);
 
         try {
             if (searchValue) {
                 const products = await productModel.find({
                     $text: { $search: searchValue },
                     sellerId: id
-                }).skip(skipPage).limit(parPage).sort({ createdAt: -1 })
+                }).skip(skipPage).limit(perPage).sort({ createdAt: -1 })
                 const totalProduct = await productModel.find({
                     $text: { $search: searchValue },
                     sellerId: id
                 }).countDocuments()
                 responseReturn(res, 200, { totalProduct, products })
             } else {
-                const products = await productModel.find({ sellerId: id }).skip(skipPage).limit(parPage).sort({ createdAt: -1 })
+                const products = await productModel.find({ sellerId: id }).skip(skipPage).limit(perPage).sort({ createdAt: -1 })
                 const totalProduct = await productModel.find({ sellerId: id }).countDocuments()
                 responseReturn(res, 200, { totalProduct, products })
             }

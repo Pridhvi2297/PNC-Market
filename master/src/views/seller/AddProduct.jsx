@@ -15,7 +15,7 @@ const AddProduct = () => {
     useEffect(() => {
         dispatch(get_category({
             searchValue: '',
-            parPage: '',
+            perPage: '',
             page: ""
         }))
     }, [])

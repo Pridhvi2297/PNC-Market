@@ -9,7 +9,7 @@ const Orders = () => {
     const dispatch = useDispatch()
     const [currentPage, setCurrentPage] = useState(1)
     const [searchValue, setSearchValue] = useState('')
-    const [parPage, setParPage] = useState(5)
+    const [perPage, setPerPage] = useState(5)
 
     useEffect(() => {
     }, [])
@@ -17,7 +17,7 @@ const Orders = () => {
     return (
         <div className='px-2 lg:px-7 pt-5 '>
             <div className='w-full p-4  bg-black rounded-md'>
-                <Search setParPage={setParPage} setSearchValue={setSearchValue} searchValue={searchValue} />
+                <Search setPerPage={setPerPage} setSearchValue={setSearchValue} searchValue={searchValue} />
                 <div className='relative overflow-x-auto'>
                     <table className='w-full text-sm text-left text-[#d0d2d6]'>
                         <thead className='text-sm text-[#d0d2d6] uppercase border-b border-slate-700'>
@@ -53,7 +53,7 @@ const Orders = () => {
                             pageNumber={currentPage}
                             setPageNumber={setCurrentPage}
                             totalItem={20}
-                            parPage={parPage}
+                            perPage={perPage}
                             showItem={3}
                         />
                     </div>

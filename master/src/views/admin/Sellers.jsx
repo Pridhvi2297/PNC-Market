@@ -9,21 +9,21 @@ const Sellers = () => {
 
   const [currentPage, setCurrentPage] = useState(1);
   const [searchValue, setSearchValue] = useState("");
-  const [parPage, setParPage] = useState(5);
+  const [perPage, setPerPage] = useState(5);
 
   useEffect(() => {
     const obj = {
-      parPage: parseInt(parPage),
+      perPage: parseInt(perPage),
       page: parseInt(currentPage),
       searchValue,
     };
-  }, [searchValue, currentPage, parPage]);
+  }, [searchValue, currentPage, perPage]);
   return (
     <div className="px-2 lg:px-7 pt-5">
       <div className="w-full p-4  bg-black rounded-md">
         <div className="flex justify-between items-center">
           <select
-            onChange={(e) => setParPage(parseInt(e.target.value))}
+            onChange={(e) => setPerPage(parseInt(e.target.value))}
             className="px-4 py-2 focus:border-indigo-500 outline-none bg-slate-700 border border-slate-700 rounded-md text-black"
           >
             <option value="5">5</option>
@@ -147,7 +147,7 @@ const Sellers = () => {
             pageNumber={currentPage}
             setPageNumber={setCurrentPage}
             totalItem={12}
-            parPage={parPage}
+            perPage={perPage}
             showItem={4}
           />
         </div>

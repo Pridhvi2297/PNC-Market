@@ -15,7 +15,7 @@ const Category = () => {
     const { loader, successMessage, errorMessage, categorys } = useSelector(state => state.category)
     const [currentPage, setCurrentPage] = useState(1)
     const [searchValue, setSearchValue] = useState('')
-    const [parPage, setParPage] = useState(5)
+    const [perPage, setPerPage] = useState(5)
     const [show, setShow] = useState(false)
     const [imageShow, setImage] = useState('')
     const [state, setState] = useState({
@@ -56,12 +56,12 @@ const Category = () => {
 
     useEffect(() => {
         const obj = {
-            parPage: parseInt(parPage),
+            perPage: parseInt(perPage),
             page: parseInt(currentPage),
             searchValue
         }
         dispatch(get_category(obj))
-    }, [searchValue, currentPage, parPage])
+    }, [searchValue, currentPage, perPage])
     return (
         <div className='px-2 lg:px-7 pt-5'>
             <div className='flex lg:hidden justify-between items-center mb-5 p-4 bg-black rounded-md'>
@@ -71,7 +71,7 @@ const Category = () => {
             <div className='flex flex-wrap w-full'>
                 <div className='w-full lg:w-7/12'>
                     <div className='w-full p-4  bg-black rounded-md'>
-                        <Search setParPage={setParPage} setSearchValue={setSearchValue} searchValue={searchValue} />
+                        <Search setPerPage={setPerPage} setSearchValue={setSearchValue} searchValue={searchValue} />
                         <div className='relative overflow-x-auto'>
                             <table className='w-full text-sm text-left text-white'>
                                 <thead className='text-sm text-white uppercase border-b border-slate-700'>
@@ -108,7 +108,7 @@ const Category = () => {
                                 pageNumber={currentPage}
                                 setPageNumber={setCurrentPage}
                                 totalItem={50}
-                                parPage={parPage}
+                                perPage={perPage}
                                 showItem={4}
                             />
                         </div>

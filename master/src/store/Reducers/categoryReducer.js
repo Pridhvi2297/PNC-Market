@@ -17,9 +17,9 @@ export const categoryAdd = createAsyncThunk(
 
 export const get_category = createAsyncThunk(
     'category/get_category',
-    async ({ parPage, page, searchValue }, { rejectWithValue, fulfillWithValue }) => {
+    async ({ perPage, page, searchValue }, { rejectWithValue, fulfillWithValue }) => {
         try {
-            const { data } = await api.get(`/category-get?page=${page}&&searchValue=${searchValue}&&parPage=${parPage}`, { withCredentials: true })
+            const { data } = await api.get(`/category-get?page=${page}&&searchValue=${searchValue}&&perPage=${perPage}`, { withCredentials: true })
             return fulfillWithValue(data)
         } catch (error) {
             return rejectWithValue(error.response.data)

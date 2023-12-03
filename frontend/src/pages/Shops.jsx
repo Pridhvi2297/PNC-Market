@@ -15,7 +15,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { price_range_product, query_products } from "../store/reducers/homeReducer";
 
 const Shops = () => {
-  const { products, totalProduct, latest_product, categorys, priceRange } = useSelector(
+  const { products, totalProduct, latest_product, categorys, priceRange, perPage } = useSelector(
     (state) => state.home
   );
 
@@ -28,7 +28,6 @@ const Shops = () => {
   const [sortPrice, setSortPrice] = useState("");
   const [styles, setStyles] = useState("grid");
   const [pageNumber, setPageNumber] = useState(1);
-  const [perPage, setPerPage] = useState(3);
   const [category, setCategory] = useState("");
 
   useEffect(() => {

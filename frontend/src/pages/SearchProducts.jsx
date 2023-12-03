@@ -17,10 +17,11 @@ import {
 } from "../store/reducers/homeReducer";
 import { useDispatch, useSelector } from "react-redux";
 
-const CategoryShops = () => {
+const SearchProducts = () => {
   let [searchParams, setSearchParams] = useSearchParams();
   const category = searchParams.get("category");
-  const { products, totalProduct, latest_product, priceRange, perPage } =
+  const searchValue = searchParams.get("value");
+  const { products, totalProduct, latest_product, priceRange, parPage } =
     useSelector((state) => state.home);
 
   const dispatch = useDispatch();
@@ -51,6 +52,7 @@ const CategoryShops = () => {
         rating,
         sortPrice,
         pageNumber,
+        searchValue,
       })
     );
   }, [
@@ -60,6 +62,7 @@ const CategoryShops = () => {
     rating,
     pageNumber,
     sortPrice,
+    searchValue,
   ]);
 
   const resetRating = () => {
@@ -80,7 +83,7 @@ const CategoryShops = () => {
       <Headers />
       <section
         className="h-[220px] mt-0 bg-cover bg-no-repeat relative bg-left"
-        style={{ backgroundImage: `url("./images/banner/details.png")` }}
+        style={{ backgroundImage: `url("/images/banner/5.jpg")` }}
       >
         <div className="absolute left-0 top-0 w-full h-full bg-[#2422228a]">
           <div className="w-[85%] md:w-[80%] sm:w-[90%] lg:w-[90%] h-full mx-auto">
@@ -319,13 +322,13 @@ const CategoryShops = () => {
                   <ShopProducts products={products} styles={styles} />
                 </div>
                 <div>
-                  {totalProduct > perPage && (
+                  {totalProduct > parPage && (
                     <Pagination
                       pageNumber={pageNumber}
                       setPageNumber={setPageNumber}
                       totalItem={totalProduct}
-                      perPage={perPage}
-                      showItem={Math.floor(totalProduct / perPage)}
+                      parPage={parPage}
+                      showItem={Math.floor(totalProduct / parPage)}
                     />
                   )}
                 </div>
@@ -339,4 +342,4 @@ const CategoryShops = () => {
   );
 };
 
-export default CategoryShops;
+export default SearchProducts;

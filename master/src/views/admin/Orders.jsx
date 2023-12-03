@@ -6,7 +6,7 @@ import Pagination from "../Pagination";
 const Orders = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchValue, setSearchValue] = useState("");
-  const [parPage, setParPage] = useState(5);
+  const [perPage, setPerPage] = useState(5);
   const [show, setShow] = useState(false);
 
   return (
@@ -14,7 +14,7 @@ const Orders = () => {
       <div className="w-full p-4  bg-black rounded-md">
         <div className="flex justify-between items-center">
           <select
-            onChange={(e) => setParPage(parseInt(e.target.value))}
+            onChange={(e) => setPerPage(parseInt(e.target.value))}
             className="px-4 py-2 focus:border-indigo-500 outline-none bg-slate-700 border border-slate-700 rounded-md text-[#d0d2d6]"
           >
             <option value="5">5</option>
@@ -84,7 +84,7 @@ const Orders = () => {
             pageNumber={currentPage}
             setPageNumber={setCurrentPage}
             totalItem={50}
-            parPage={parPage}
+            perPage={perPage}
             showItem={4}
           />
         </div>

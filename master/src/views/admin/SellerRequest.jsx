@@ -10,20 +10,20 @@ const SellerRequest = () => {
     const { sellers, totalSeller } = useSelector(state => state.seller)
     const [currentPage, setCurrentPage] = useState(1)
     const [searchValue, setSearchValue] = useState('')
-    const [parPage, setParPage] = useState(5)
+    const [perPage, setPerPage] = useState(5)
     const [show, setShow] = useState(false)
 
     useEffect(() => {
         dispatch(get_seller_request({
-            parPage,
+            perPage,
             searchValue,
             page: currentPage
         }))
-    }, [parPage, searchValue, currentPage])
+    }, [perPage, searchValue, currentPage])
     return (
         <div className='px-2 lg:px-7 pt-5'>
             <div className='w-full p-4  bg-black rounded-md'>
-                <Search setParPage={setParPage} setSearchValue={setSearchValue} searchValue={searchValue} />
+                <Search setPerPage={setPerPage} setSearchValue={setSearchValue} searchValue={searchValue} />
                 <div className='relative overflow-x-auto'>
                     <table className='w-full text-sm text-left text-white'>
                         <thead className='text-xs text-white uppercase border-b border-slate-700'>
@@ -63,12 +63,12 @@ const SellerRequest = () => {
                     </table>
                 </div>
                 {
-                    totalSeller <= parPage ? "" : <div className='w-full flex justify-end mt-4 bottom-4 right-4'>
+                    totalSeller <= perPage ? "" : <div className='w-full flex justify-end mt-4 bottom-4 right-4'>
                         <Pagination
                             pageNumber={currentPage}
                             setPageNumber={setCurrentPage}
                             totalItem={50}
-                            parPage={parPage}
+                            perPage={perPage}
                             showItem={4}
                         />
                     </div>
