@@ -105,7 +105,6 @@ const EditProduct = () => {
             stock: state.stock,
             productId: productId
         }
-        console.log(obj)
         dispatch(update_product(obj))
     }
     return (

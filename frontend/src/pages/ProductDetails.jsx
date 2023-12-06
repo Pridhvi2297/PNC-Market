@@ -176,7 +176,7 @@ const ProductDetails = () => {
                     </div>
                     <div>
                       <button className="px-8 py-3 h-[50px] cursor-pointer hover:shadow-lg hover:shadow-purple-500/40 bg-purple-500 text-white">
-                        Add To Card
+                        Add To Cart
                       </button>
                     </div>
                   </>

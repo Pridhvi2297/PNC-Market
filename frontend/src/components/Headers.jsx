@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { FcFeedback } from "react-icons/fc";
@@ -17,22 +17,43 @@ import {
   FcAbout,
   FcBusinessContact,
 } from "react-icons/fc";
+import {
+  get_card_products,
+  get_wishlist_products,
+} from "../store/reducers/cardReducer";
 
 const Headers = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { pathname } = useLocation();
   const { categorys } = useSelector((state) => state.home);
-  const { userInfo } = useSelector(state => state.auth)
+  const { userInfo } = useSelector((state) => state.auth);
+  const { card_product_count, wishlist_count } = useSelector(
+    (state) => state.card
+  );
+
+  const { pathname } = useLocation();
   const [showShidebar, setShowShidebar] = useState(true);
   const [categoryShow, setCategoryShow] = useState(true);
   const [searchValue, setSearchValue] = useState("");
   const [category, setCategory] = useState("");
-  const wishlist_count = 7;
-  const card_product_count = 10;
 
   const search = () => {
     navigate(`/products/search?category=${category}&&value=${searchValue}`);
   };
+  const redirect_card_page = () => {
+    if (userInfo) {
+      navigate(`/cart`);
+    } else {
+      navigate(`/login`);
+    }
+  };
+
+  useEffect(() => {
+    if (userInfo) {
+      dispatch(get_card_products(userInfo.id));
+      dispatch(get_wishlist_products(userInfo.id));
+    }
+  }, [userInfo]);
 
   return (
     <div className="w-full bg-[#1ef7ec]">
@@ -212,7 +233,7 @@ const Headers = () => {
                       )}
                     </div>
                     <div
-                      onClick={""}
+                      onClick={redirect_card_page}
                       className="relative flex justify-center items-center cursor-pointer w-[35px] h-[35px] rounded-full bg-[#e2e2e2]"
                     >
                       <span className="text-xl text-orange-500">

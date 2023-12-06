@@ -101,7 +101,6 @@ export const add_to_wishlist = createAsyncThunk(
           const {
               data
           } = await api.post('/home/product/add-to-wishlist', info)
-          console.log(data)
           return fulfillWithValue(data)
       } catch (error) {
           return rejectWithValue(error.response.data)
