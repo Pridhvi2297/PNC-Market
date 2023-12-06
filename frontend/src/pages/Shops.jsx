@@ -1,23 +1,33 @@
 import React, { useEffect, useState } from "react";
-import Headers from "../components/Headers";
 import { Range } from "react-range";
-import Footer from "../components/Footer";
-import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { Link } from "react-router-dom";
-import { AiFillStar } from "react-icons/ai";
-import { CiStar } from "react-icons/ci";
-import { BsFillGridFill } from "react-icons/bs";
 import Products from "../components/products/Products";
 import { FaThList } from "react-icons/fa";
 import ShopProducts from "../components/products/ShopProducts";
 import Pagination from "../components/Pagination";
 import { useDispatch, useSelector } from "react-redux";
-import { price_range_product, query_products } from "../store/reducers/homeReducer";
+import {
+  price_range_product,
+  query_products,
+} from "../store/reducers/homeReducer";
+import { MdOutlineKeyboardArrowRight } from "react-icons/md";
+import Headers from "../components/Headers";
+import Footer from "../components/Footer";
+import { AiFillStar } from "react-icons/ai";
+import { CiStar } from "react-icons/ci";
+import { BsFillGridFill } from "react-icons/bs";
+
+
 
 const Shops = () => {
-  const { products, totalProduct, latest_product, categorys, priceRange, perPage } = useSelector(
-    (state) => state.home
-  );
+  const {
+    products,
+    totalProduct,
+    latest_product,
+    categorys,
+    priceRange,
+    perPage,
+  } = useSelector((state) => state.home);
 
   const dispatch = useDispatch();
   const [filter, setFilter] = useState(true);
@@ -49,28 +59,37 @@ const Shops = () => {
   };
   useEffect(() => {
     dispatch(
-        query_products({
-            low: state.values[0],
-            high: state.values[1],
-            category,
-            rating,
-            sortPrice,
-            pageNumber
-        })
-    )
-}, [state.values[0], state.values[1], category, rating, pageNumber, sortPrice])
-
-const resetRating = () => {
-    setRatingQ('')
-    dispatch(query_products({
+      query_products({
         low: state.values[0],
         high: state.values[1],
         category,
-        rating: '',
+        rating,
         sortPrice,
-        pageNumber
-    }))
-}
+        pageNumber,
+      })
+    );
+  }, [
+    state.values[0],
+    state.values[1],
+    category,
+    rating,
+    pageNumber,
+    sortPrice,
+  ]);
+
+  const resetRating = () => {
+    setRatingQ("");
+    dispatch(
+      query_products({
+        low: state.values[0],
+        high: state.values[1],
+        category,
+        rating: "",
+        sortPrice,
+        pageNumber,
+      })
+    );
+  };
 
   return (
     <div>
@@ -309,7 +328,7 @@ const resetRating = () => {
               <div className="pl-8 md:pl-0">
                 <div className="py-4 bg-white mb-10 px-3 rounded-md flex justify-between items-start border">
                   <h2 className="text-lg font-medium text-slate-600">
-                  {totalProduct} Products
+                    {totalProduct} Products
                   </h2>
                   <div className="flex justify-center items-center gap-3">
                     <select
