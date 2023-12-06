@@ -1,13 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import Headers from "../components/Headers";
 import Footer from "../components/Footer";
 import FadeLoader from "react-spinners/FadeLoader";
 import { FaSquareFacebook, FaArrowRightFromBracket } from "react-icons/fa6";
 import { ImGooglePlus2 } from "react-icons/im";
+import { customer_register, messageClear } from "../store/reducers/authReducer";
+import toast from 'react-hot-toast'
 
 const Register = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { loader, successMessage, errorMessage, userInfo } = useSelector(
+    (state) => state.auth
+  );
   const [state, setState] = useState({
     name: "",
     email: "",
@@ -22,10 +29,23 @@ const Register = () => {
   };
 
   const register = (e) => {
-    e.preventDefault()
-    console.log(state)
-}
-  const loader = false;
+    e.preventDefault();
+    dispatch(customer_register(state));
+  };
+
+  useEffect(() => {
+    if (successMessage) {
+      toast.success(successMessage);
+      dispatch(messageClear());
+    }
+    if (errorMessage) {
+      toast.error(errorMessage);
+      dispatch(messageClear());
+    }
+    if (userInfo) {
+      navigate("/");
+    }
+  }, [successMessage, errorMessage]);
 
   return (
     <div>

@@ -22,11 +22,11 @@ const Headers = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const { categorys } = useSelector((state) => state.home);
+  const { userInfo } = useSelector(state => state.auth)
   const [showShidebar, setShowShidebar] = useState(true);
   const [categoryShow, setCategoryShow] = useState(true);
   const [searchValue, setSearchValue] = useState("");
   const [category, setCategory] = useState("");
-  const user = true;
   const wishlist_count = 7;
   const card_product_count = 10;
 
@@ -87,7 +87,7 @@ const Headers = () => {
                   </ul>
                 </div>
 
-                {user ? (
+                {userInfo ? (
                   <Link
                     className="flex cursor-pointer justify-center items-center gap-2 text-sm"
                     to="/dashboard"
@@ -95,7 +95,7 @@ const Headers = () => {
                     <span>
                       <FaUser />
                     </span>
-                    <span>Pridhvinath</span>
+                    <span>{userInfo.name}</span>
                   </Link>
                 ) : (
                   <Link
@@ -198,7 +198,7 @@ const Headers = () => {
                   <div className="flex justify-center gap-5">
                     <div
                       onClick={() =>
-                        navigate(user ? "/dashboard/my-wishlist" : "/login")
+                        navigate(userInfo ? "/dashboard/my-wishlist" : "/login")
                       }
                       className="relative flex justify-center items-center cursor-pointer w-[35px] h-[35px] rounded-full bg-[#e2e2e2]"
                     >
@@ -261,7 +261,7 @@ const Headers = () => {
                   <li>English</li>
                 </ul>
               </div>
-              {user ? (
+              {userInfo ? (
                 <Link
                   className="flex cursor-pointer justify-center items-center gap-2 text-sm"
                   to="/dashboard"
@@ -269,7 +269,7 @@ const Headers = () => {
                   <span>
                     <FaUser />
                   </span>
-                  <span>Pridhvinath</span>
+                  <span>{userInfo.name}</span>
                 </Link>
               ) : (
                 <div className="flex cursor-pointer justify-center items-center gap-2 text-sm">
