@@ -162,6 +162,7 @@ const Headers = () => {
                 <ul className="flex justify-start items-start gap-8 text-sm font-bold uppercase md-lg:hidden">
                   <li>
                     <Link
+                      to="/"
                       className={`p-2 block ${
                         pathname === "/" ? "text-[#7fad39]" : "text-slate-600"
                       }`}
@@ -173,7 +174,7 @@ const Headers = () => {
                     <Link
                       to="/shops"
                       className={`p-2 block ${
-                        pathname === "/shop"
+                        pathname === "/shops"
                           ? "text-[#7fad39]"
                           : "text-slate-600"
                       }`}
@@ -227,7 +228,7 @@ const Headers = () => {
                         <FcLike size={25} />
                       </span>
                       {wishlist_count !== 0 && (
-                        <div className="w-[20px] h-[20px] absolute bg-green-500 rounded-full text-white flex justify-center items-center -top-[3px] -right-[5px]">
+                        <div className="w-[20px] h-[20px] absolute bg-green-500 rounded-full text-white flex justify-center items-center -top-[3px] -right-[5px] text-xs">
                           {wishlist_count}
                         </div>
                       )}
@@ -240,7 +241,7 @@ const Headers = () => {
                         <FcPackage size={25} />
                       </span>
                       {card_product_count !== 0 && (
-                        <div className="w-[20px] h-[20px] absolute bg-green-500 rounded-full text-white flex justify-center items-center -top-[3px] -right-[5px]">
+                        <div className="w-[20px] h-[20px] absolute bg-green-500 rounded-full text-white flex justify-center items-center -top-[3px] -right-[5px] text-xs">
                           {card_product_count}
                         </div>
                       )}
@@ -305,6 +306,7 @@ const Headers = () => {
               <li className="flex items-center">
                 <FcHome className="mr-2" />
                 <Link
+                  to="/"
                   className={`py-2 block ${
                     pathname === "/" ? "text-[#7fad39]" : "text-slate-600"
                   }`}
@@ -313,10 +315,11 @@ const Headers = () => {
                 </Link>
               </li>
               <li className="flex items-center">
-                <FcShop className="mr-2" />
+                  <FcShop className="mr-2" />
                 <Link
+                  to="/shops" // Specify the route to the shop
                   className={`py-2 block ${
-                    pathname === "/shop" ? "text-[#7fad39]" : "text-slate-600"
+                    pathname === "/shops" ? "text-[#7fad39]" : "text-slate-600"
                   }`}
                 >
                   Shop

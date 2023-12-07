@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useSelector } from 'react-redux'
 import {
   AiFillGithub,
   AiOutlineTwitter,
@@ -12,10 +13,10 @@ import {
 import { footerProductLinks, footerSupportLinks } from "../data/data";
 
 const Footer = () => {
-  const card_product_count = 10;
-  const wishlist_count = 15;
-  const userInfo = true;
-  const navigate = useNavigate();
+
+  const { card_product_count, wishlist_count } = useSelector(state => state.card)
+  const navigate = useNavigate()
+  const { userInfo } = useSelector(state => state.auth)
 
   return (
     <footer className="bg-black text-white">
@@ -125,13 +126,13 @@ const Footer = () => {
         <div className="w-full h-full flex gap-3 flex-col justify-center items-center">
           <div
             onClick={() => navigate(userInfo ? "/cart" : "/login")}
-            className="relative flex justify-center items-center cursor-pointer w-[35px] h-[35px] rounded-full bg-[#e2e2e2]"
+            className="relative flex justify-center items-center cursor-pointer w-[40px] h-[40px] rounded-full bg-[#e2e2e2]"
           >
             <span className="text-xl text-orange-500">
-              <AiFillShopping />
+              <AiFillShopping size={20}/>
             </span>
             {card_product_count !== 0 && (
-              <div className="w-[20px] h-[20px] absolute bg-green-500 rounded-full text-white flex justify-center items-center -top-[3px] -right-[5px]">
+              <div className="w-[20px] h-[20px] absolute bg-green-500 rounded-full text-white flex justify-center items-center -top-[3px] -right-[5px] text-xs">
                 {card_product_count}
               </div>
             )}
@@ -143,10 +144,10 @@ const Footer = () => {
             className="relative flex justify-center items-center cursor-pointer w-[35px] h-[35px] rounded-full bg-[#e2e2e2]"
           >
             <span className="text-xl text-red-500">
-              <AiFillHeart />
+              <AiFillHeart size={20}/>
             </span>
             {wishlist_count !== 0 && (
-              <div className="w-[20px] h-[20px] absolute bg-green-500 rounded-full text-white flex justify-center items-center -top-[3px] -right-[5px]">
+              <div className="w-[20px] h-[20px] absolute bg-green-500 rounded-full text-white flex justify-center items-center -top-[3px] -right-[5px] text-xs">
                 {wishlist_count}
               </div>
             )}

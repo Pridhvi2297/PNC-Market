@@ -10,7 +10,6 @@ import {
 } from "../../store/reducers/cardReducer";
 import toast from "react-hot-toast";
 
-
 const FeatureProducts = ({ products }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -77,11 +76,14 @@ const FeatureProducts = ({ products }) => {
                 ) : (
                   ""
                 )}
-                <img
-                  src={p.images[0]}
-                  alt="product images"
-                  className="sm:w-full w-full h-[200px]"
-                />
+                <Link to={`/product/details/${p.slug}`}>
+                  <img
+                    src={p.images[0]}
+                    alt="product images"
+                    className="sm:w-full w-full h-[200px]"
+                  />
+                </Link>
+
                 <ul className="flex transition-all duration-700 -bottom-10 justify-center items-center gap-2 absolute w-full group-hover:bottom-3">
                   <li
                     onClick={() => add_wishlist(p)}
