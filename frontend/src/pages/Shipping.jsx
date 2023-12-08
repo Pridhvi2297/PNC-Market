@@ -1,10 +1,15 @@
 import React, { useState } from "react";
 import Headers from "../components/Headers";
 import Footer from "../components/Footer";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation, Link, useNavigate } from "react-router-dom";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
+import { useDispatch, useSelector } from "react-redux";
+import { place_order } from "../store/reducers/orderReducer";
 
 const Shipping = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { userInfo } = useSelector((state) => state.auth);
   const {
     state: { products, price, shipping_fee, items },
   } = useLocation();
@@ -18,7 +23,12 @@ const Shipping = () => {
     city: "",
     area: "",
   });
-
+  const inputHandle = (e) => {
+    setState({
+      ...state,
+      [e.target.name]: e.target.value,
+    });
+  };
   const save = (e) => {
     e.preventDefault();
     const { name, address, phone, post, province, city, area } = state;
@@ -26,13 +36,18 @@ const Shipping = () => {
       setRes(true);
     }
   };
-  const inputHandle = (e) => {
-    setState({
-      ...state,
-      [e.target.name]: e.target.value,
-    });
+  const placeOrder = (e) => {
+    e.preventDefault();
+    dispatch(place_order({
+        price,
+        products,
+        shipping_fee,
+        shippingInfo: state,
+        userId: userInfo.id,
+        navigate,
+        items
+    }))
   };
-
   return (
     <div>
       <Headers />
@@ -56,8 +71,7 @@ const Shipping = () => {
           </div>
         </div>
       </section>
-
-      <section className="bg-[#d1dce0]">
+      <section className="bg-[#eeeeee]">
         <div className="w-[85%] lg:w-[90%] md:w-[90%] sm:w-[90] mx-auto py-16">
           <div className="w-full flex flex-wrap">
             <div className="w-[67%] md-lg:w-full">
@@ -78,7 +92,7 @@ const Shipping = () => {
                               type="text"
                               className="w-full px-3 py-2 border border-slate-200 outline-none focus:border-indigo-500 rounded-md"
                               name="name"
-                              placeholder="Name"
+                              placeholder="name"
                               id="name"
                             />
                           </div>
@@ -104,19 +118,19 @@ const Shipping = () => {
                               type="text"
                               className="w-full px-3 py-2 border border-slate-200 outline-none focus:border-indigo-500 rounded-md"
                               name="phone"
-                              placeholder="Phone"
+                              placeholder="phone"
                               id="phone"
                             />
                           </div>
                           <div className="flex flex-col gap-1 mb-2 w-full">
-                            <label htmlFor="post">Zipcode</label>
+                            <label htmlFor="post">Post</label>
                             <input
                               onChange={inputHandle}
                               value={state.post}
                               type="text"
                               className="w-full px-3 py-2 border border-slate-200 outline-none focus:border-indigo-500 rounded-md"
                               name="post"
-                              placeholder="Zipcode"
+                              placeholder="post"
                               id="post"
                             />
                           </div>
@@ -130,7 +144,7 @@ const Shipping = () => {
                               type="text"
                               className="w-full px-3 py-2 border border-slate-200 outline-none focus:border-indigo-500 rounded-md"
                               name="province"
-                              placeholder="Province"
+                              placeholder="province"
                               id="province"
                             />
                           </div>
@@ -142,7 +156,7 @@ const Shipping = () => {
                               type="text"
                               className="w-full px-3 py-2 border border-slate-200 outline-none focus:border-indigo-500 rounded-md"
                               name="city"
-                              placeholder="City"
+                              placeholder="city"
                               id="city"
                             />
                           </div>
@@ -156,7 +170,7 @@ const Shipping = () => {
                               type="text"
                               className="w-full px-3 py-2 border border-slate-200 outline-none focus:border-indigo-500 rounded-md"
                               name="area"
-                              placeholder="Area"
+                              placeholder="area"
                               id="province"
                             />
                           </div>
@@ -191,12 +205,11 @@ const Shipping = () => {
                         </span>
                       </p>
                       <p className="text-slate-600 text-sm">
-                        Email to pncmart22@gmail.com
+                        Email to sheikhfarid@gmail.com
                       </p>
                     </div>
                   )}
                 </div>
-
                 {products.map((p, i) => (
                   <div key={i} className="flex bg-white p-4 flex-col gap-2">
                     <div className="flex justify-start items-center">
@@ -263,6 +276,7 @@ const Shipping = () => {
                     <span>${price + shipping_fee}</span>
                   </div>
                   <button
+                    onClick={placeOrder}
                     disabled={res ? false : true}
                     className={`px-5 py-[6px] rounded-sm hover:shadow-orange-500/20 hover:shadow-lg ${
                       res ? "bg-orange-500" : "bg-orange-300"
@@ -276,7 +290,6 @@ const Shipping = () => {
           </div>
         </div>
       </section>
-
       <Footer />
     </div>
   );
