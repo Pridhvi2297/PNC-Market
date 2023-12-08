@@ -2,10 +2,9 @@ import React, { useState } from "react";
 import Headers from "../components/Headers";
 import Footer from "../components/Footer";
 import { useLocation } from "react-router-dom";
+import Stripe from "../components/Stripe";
 const Payment = () => {
-  const price = 100;
-  const items = 3;
-  const orderId = 8687783678;
+    const { state: { price, items, orderId } } = useLocation()
   const [paymentMethod, setPaymentMethod] = useState("stripe");
   return (
     <div>
@@ -34,7 +33,9 @@ const Payment = () => {
                   <div
                     onClick={() => setPaymentMethod("paypal")}
                     className={`w-[20%] border-r cursor-pointer py-8 px-12 ${
-                      paymentMethod === "paypal" ? "bg-[#f8d45d]" : "bg-slate-100"
+                      paymentMethod === "paypal"
+                        ? "bg-[#f8d45d]"
+                        : "bg-slate-100"
                     }`}
                   >
                     <div className="flex flex-col gap-[10px] justify-center items-center">
@@ -49,7 +50,9 @@ const Payment = () => {
                   <div
                     onClick={() => setPaymentMethod("venmo")}
                     className={`w-[20%] border-r cursor-pointer py-8 px-12 ${
-                      paymentMethod === "venmo" ? "bg-[#008cff]" : "bg-slate-100"
+                      paymentMethod === "venmo"
+                        ? "bg-[#008cff]"
+                        : "bg-slate-100"
                     }`}
                   >
                     <div className="flex flex-col gap-[10px] justify-center items-center">
@@ -63,6 +66,25 @@ const Payment = () => {
                   </div>
                 </div>
               </div>
+              {paymentMethod === "stripe" && (
+                <div>
+                  <Stripe orderId={orderId} price={price} />
+                </div>
+              )}
+              {paymentMethod === "paypal" && (
+                <div className="w-full px-4 py-8 bg-white shadow-sm">
+                  <button className="px-10 py-[6px] rounded-sm hover:shadow-wrange-500/20 hover:shadow-lg bg-orange-500 text-white">
+                    Pay Now
+                  </button>
+                </div>
+              )}
+              {paymentMethod === "venmo" && (
+                <div className="w-full px-4 py-8 bg-white shadow-sm">
+                  <button className="px-10 py-[6px] rounded-sm hover:shadow-wrange-500/20 hover:shadow-lg bg-orange-500 text-white">
+                    Pay Now
+                  </button>
+                </div>
+              )}
             </div>
 
             <div className="w-5/12 md:w-full">
