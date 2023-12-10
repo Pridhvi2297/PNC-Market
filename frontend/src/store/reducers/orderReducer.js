@@ -18,7 +18,7 @@ export const place_order = createAsyncThunk(
         try {
             const {
                 data
-            } = await api.post('/home/order/place-order', {
+            } = await api.post('/home/order/palce-order', {
                 price,
                 products,
                 shipping_fee,
@@ -54,7 +54,7 @@ export const get_orders = createAsyncThunk(
         try {
             const {
                 data
-            } = await api.get(`/home/customer/gat-orders/${customerId}/${status}`)
+            } = await api.get(`/home/customer/get-orders/${customerId}/${status}`)
             return fulfillWithValue(data)
         } catch (error) {
             console.log(error.response)
@@ -71,7 +71,7 @@ export const get_order = createAsyncThunk(
         try {
             const {
                 data
-            } = await api.get(`/home/customer/gat-order/${orderId}`)
+            } = await api.get(`/home/customer/get-order/${orderId}`)
             return fulfillWithValue(data)
         } catch (error) {
             console.log(error.response)

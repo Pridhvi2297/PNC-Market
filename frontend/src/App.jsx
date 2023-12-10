@@ -12,6 +12,12 @@ import { useEffect } from "react";
 import CategoryShops from "./pages/CategoryShop";
 import SearchProducts from "./pages/SearchProducts";
 import Payment from "./pages/Payment";
+import Dashboard from "./pages/Dashboard";
+import ProtectUser from "./utils/ProtectUser";
+import Index from "./components/dashboard/Index";
+import ChangePassword from "./components/dashboard/ChangePassword";
+import Orders from "./components/dashboard/Orders";
+import Wishlist from "./components/dashboard/Wishlist";
 
 export default function App() {
   const dispatch = useDispatch();
@@ -30,7 +36,16 @@ export default function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/product/details/:slug" element={<ProductDetails />} />
         <Route path="/shipping" element={<Shipping />} />
-        <Route path='/payment' element={<Payment />} />
+        <Route path="/payment" element={<Payment />} />
+
+        <Route path="/dashboard" element={<ProtectUser />}>
+          <Route path="" element={<Dashboard />}>
+            <Route path="" element={<Index />} />
+            <Route path='my-orders' element={<Orders />} />
+            <Route path='my-wishlist' element={<Wishlist />} />
+            <Route path='change-password' element={<ChangePassword />} />
+          </Route>
+        </Route>
       </Routes>
     </BrowserRouter>
   );
