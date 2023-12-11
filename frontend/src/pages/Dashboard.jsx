@@ -64,7 +64,7 @@ const Dashboard = () => {
 
                                 <li className='flex justify-start items-center gap-2 py-2'>
                                     <span className='text-xl'><TfiLock /></span>
-                                    <Link to='/dashboard/chage-password' className='block'>Change Password</Link>
+                                    <Link to='/dashboard/change-password' className='block'>Change Password</Link>
                                 </li>
                                 <li onClick={logout} className='flex justify-start items-center gap-2 py-2 cursor-pointer'>
                                     <span className='text-xl'><BiLogInCircle /></span>
