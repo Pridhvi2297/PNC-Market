@@ -10,7 +10,6 @@ const {
 const { responseReturn } = require("../../utiles/response");
 
 const moment = require("moment");
-
 class orderController {
   paymentCheck = async (id) => {
     try {
@@ -81,7 +80,7 @@ class orderController {
           products: storePro,
           price: pri,
           payment_status: "unpaid",
-          shippingInfo: "PNC Warehouse",
+          shippingInfo: "Dhaka myshop Warehouse",
           delivery_status: "pending",
           date: tempDate,
         });

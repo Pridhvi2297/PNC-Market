@@ -96,7 +96,7 @@ const Headers = () => {
                 </div>
                 <div className="flex group cursor-pointer text-slate-800 text-sm justify-center items-center gap-1 relative after:h-[18px] after:w-[1px] after:bg-[#afafaf] after:-right-[16px] after:absolute before:absolute before:h-[18px] before:bg-[#afafaf] before:w-[1px] before:-left-[20px]">
                   <img
-                    src="https://studyinthestates.dhs.gov/profiles/sitsd8_gov/themes/custom/sits/assets/img/us_flag_small.png"
+                    src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg"
                     alt=""
                     style={{ width: "30px", height: "25px" }}
                   />
@@ -272,7 +272,7 @@ const Headers = () => {
             <div className="flex justify-star items-center gap-10">
               <div className="flex group cursor-pointer text-slate-800 text-sm justify-center items-center gap-1 relative after:h-[18px] after:w-[1px] after:bg-[#afafaf] after:-right-[16px] after:absolute">
                 <img
-                  src="https://studyinthestates.dhs.gov/profiles/sitsd8_gov/themes/custom/sits/assets/img/us_flag_small.png"
+                  src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg"
                   alt=""
                   style={{ width: "30px", height: "20px" }}
                 />
