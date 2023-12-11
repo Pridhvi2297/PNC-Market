@@ -160,7 +160,7 @@ const ProductDetails = () => {
       state: {
         products: obj,
         price: price * quantity,
-        shipping_fee: 85,
+        shipping_fee: 10,
         items: 1,
       },
     });
