@@ -19,6 +19,7 @@ import ChangePassword from "./components/dashboard/ChangePassword";
 import Orders from "./components/dashboard/Orders";
 import Wishlist from "./components/dashboard/Wishlist";
 import Order from './components/dashboard/Order';
+import Chat from "./components/dashboard/Chat";
 
 
 export default function App() {
@@ -47,6 +48,8 @@ export default function App() {
             <Route path='my-wishlist' element={<Wishlist />} />
             <Route path='order/details/:orderId' element={<Order />} />
             <Route path='change-password' element={<ChangePassword />} />
+            <Route path='chat' element={<Chat />} />
+            <Route path='chat/:sellerId' element={<Chat />} />
           </Route>
         </Route>
       </Routes>
