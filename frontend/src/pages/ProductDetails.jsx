@@ -1,21 +1,20 @@
 import React, { useEffect, useState } from "react";
 import Headers from "../components/Headers";
 import Footer from "../components/Footer";
-import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { Link, useParams, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import Ratings from "../components/Ratings";
-import { AiFillHeart } from "react-icons/ai";
-import { ImGooglePlus2 } from "react-icons/im";
-import { BsTwitterX } from "react-icons/bs";
-import { FaSquareFacebook, FaInstagram } from "react-icons/fa6";
-import Reviews from "../components/Reviews";
-import { Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+import { useDispatch, useSelector } from "react-redux";
 import "swiper/css/pagination";
+import { Pagination } from "swiper/modules";
+import Ratings from "../components/Ratings";
+import { AiFillHeart } from "react-icons/ai";
+import { FaFacebookF, FaLinkedin } from "react-icons/fa";
+import { AiFillGithub, AiOutlineTwitter } from "react-icons/ai";
+import Reviews from "../components/Reviews";
 import { get_product } from "../store/reducers/homeReducer";
 import {
   add_to_card,
@@ -24,19 +23,18 @@ import {
 } from "../store/reducers/cardReducer";
 import toast from "react-hot-toast";
 
-const ProductDetails = () => {
+const Details = () => {
   const navigate = useNavigate();
   const { slug } = useParams();
   const dispatch = useDispatch();
-  const { product, relatedProducts,totalReview, moreProducts } = useSelector(
+  const { product, relatedProducts, moreProducts } = useSelector(
     (state) => state.home
   );
-  const { errorMessage, successMessage } = useSelector((state) => state.card);
   const { userInfo } = useSelector((state) => state.auth);
+  const { errorMessage, successMessage } = useSelector((state) => state.card);
 
   const [image, setImage] = useState("");
   const [state, setState] = useState("reviews");
-
   const responsive = {
     superLargeDesktop: {
       breakpoint: { max: 4000, min: 3000 },
@@ -131,10 +129,6 @@ const ProductDetails = () => {
     }
   }, [errorMessage, successMessage]);
 
-  useEffect(() => {
-    dispatch(get_product(slug));
-  }, [slug]);
-
   const buy = () => {
     let price = 0;
     if (product.discount !== 0) {
@@ -160,12 +154,11 @@ const ProductDetails = () => {
       state: {
         products: obj,
         price: price * quantity,
-        shipping_fee: 10,
+        shipping_fee: 85,
         items: 1,
       },
     });
   };
-
   return (
     <div>
       <Headers />
@@ -181,7 +174,6 @@ const ProductDetails = () => {
           </div>
         </div>
       </div>
-
       <div className="bg-slate-100 py-5 mb-5">
         <div className="w-[85%] md:w-[80%] sm:w-[90%] lg:w-[90%] h-full mx-auto">
           <div className="flex justify-start items-center text-md text-slate-600 w-full">
@@ -197,7 +189,6 @@ const ProductDetails = () => {
           </div>
         </div>
       </div>
-
       <section>
         <div className="w-[85%] md:w-[80%] sm:w-[90%] lg:w-[90%] h-full mx-auto pb-16">
           <div className="grid grid-cols-2 md-lg:grid-cols-1 gap-8">
@@ -232,19 +223,16 @@ const ProductDetails = () => {
                 )}
               </div>
             </div>
-
             <div className="flex flex-col gap-5">
               <div className="text-3xl text-slate-600 font-bold">
                 <h2>{product.name}</h2>
               </div>
-
               <div className="flex justify-start items-center gap-4">
                 <div className="flex text-xl">
                   <Ratings ratings={product.rating} />
                 </div>
-                <span className="text-green-500">({totalReview} reviews)</span>
+                <span className="text-green-500">(23 reviews)</span>
               </div>
-
               <div className="text-2xl text-red-500 font-bold flex gap-3">
                 {product.discount !== 0 ? (
                   <>
@@ -262,11 +250,9 @@ const ProductDetails = () => {
                   <h2>Price : ${product.price}</h2>
                 )}
               </div>
-
               <div className="text-slate-600">
                 <p>{product.description}</p>
               </div>
-
               <div className="flex gap-3 pb-10 border-b">
                 {product.stock ? (
                   <>
@@ -284,7 +270,7 @@ const ProductDetails = () => {
                         onClick={add_card}
                         className="px-8 py-3 h-[50px] cursor-pointer hover:shadow-lg hover:shadow-purple-500/40 bg-purple-500 text-white"
                       >
-                        Add To Cart
+                        Add To Card
                       </button>
                     </div>
                   </>
@@ -300,7 +286,6 @@ const ProductDetails = () => {
                   </div>
                 </div>
               </div>
-
               <div className="flex py-5 gap-5">
                 <div className="w-[150px] text-black font-bold text-xl flex flex-col gap-5">
                   <span>Availability</span>
@@ -317,34 +302,34 @@ const ProductDetails = () => {
                   <ul className="flex justify-start items-center gap-3">
                     <li>
                       <a
-                        className="w-[38px] h-[38px] hover:bg-[#7fad39] hover:text-white flex justify-center items-center bg-indigo-800 rounded-full text-white"
-                        href="/"
+                        className="w-[38px] h-[38px] hover:bg-[#7fad39] hover:text-white flex justify-center items-center bg-indigo-500 rounded-full text-white"
+                        href="#"
                       >
-                        <FaSquareFacebook size={25} />
+                        <FaFacebookF />
                       </a>
                     </li>
                     <li>
                       <a
-                        className="w-[38px] h-[38px] hover:bg-[#7fad39] hover:text-white flex justify-center items-center bg-black rounded-full text-white"
-                        href="/"
+                        className="w-[38px] h-[38px] hover:bg-[#7fad39] hover:text-white flex justify-center items-center bg-cyan-500 rounded-full text-white"
+                        href="#"
                       >
-                        <BsTwitterX size={25} />
+                        <AiOutlineTwitter />
                       </a>
                     </li>
                     <li>
                       <a
-                        className="w-[38px] h-[38px] hover:bg-[#7fad39] hover:text-white flex justify-center items-center bg-red-500 rounded-full text-white"
-                        href="/"
+                        className="w-[38px] h-[38px] hover:bg-[#7fad39] hover:text-white flex justify-center items-center bg-purple-500 rounded-full text-white"
+                        href="#"
                       >
-                        <FaInstagram size={25} />
+                        <FaLinkedin />
                       </a>
                     </li>
                     <li>
                       <a
-                        className="w-[38px] h-[38px] hover:bg-[#7fad39] hover:text-white flex justify-center items-center bg-green-800 rounded-full text-white"
-                        href="/"
+                        className="w-[38px] h-[38px] hover:bg-[#7fad39] hover:text-white flex justify-center items-center bg-blue-500 rounded-full text-white"
+                        href="#"
                       >
-                        <ImGooglePlus2 size={20} />
+                        <AiFillGithub />
                       </a>
                     </li>
                   </ul>
@@ -444,7 +429,6 @@ const ProductDetails = () => {
           </div>
         </div>
       </section>
-
       <section>
         <div className="w-[85%] md:w-[80%] sm:w-[90%] lg:w-[90%] h-full mx-auto">
           <h2 className="text-2xl py-8 text-slate-600">Related Products</h2>
@@ -507,10 +491,9 @@ const ProductDetails = () => {
           </div>
         </div>
       </section>
-
       <Footer />
     </div>
   );
 };
 
-export default ProductDetails;
+export default Details;
