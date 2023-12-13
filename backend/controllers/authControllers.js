@@ -126,6 +126,7 @@ class authControllers {
                     responseReturn(res, 404, { error: 'image upload failed' })
                 }
             } catch (error) {
+                //console.log(error)
                 responseReturn(res, 500, { error: error.message })
             }
         })
