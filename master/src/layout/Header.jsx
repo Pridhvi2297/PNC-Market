@@ -4,6 +4,8 @@ import {useSelector} from 'react-redux'
 const Header = ({ showSidebar, setShowSidebar }) => {
 
     const {userInfo} = useSelector(state=>state.auth)
+    const { seller } = useSelector((state) => state.seller);
+    console.log(seller.data)
     return (
         <div className='fixed top-0 left-0 w-full py-5 px-2 lg:px-7 z-40'>
             <div className='ml-0 lg:ml-[260px] rounded-md h-[65px] flex justify-between items-center bg-[#283046] text-[#d0d2d6] px-5 transition-all'>
@@ -21,7 +23,7 @@ const Header = ({ showSidebar, setShowSidebar }) => {
                                 <span className='text-[14px] w-full font-normal'>{userInfo.role}</span>
                             </div>
                             {
-                                userInfo.role === 'admin' ? <img className='w-[45px] h-[45px] rounded-full overflow-hidden' src="/images/admin.png" alt="" /> : <img className='w-[45px] h-[45px] rounded-full overflow-hidden' src="/images/seller.png" alt="" />
+                                userInfo.role === 'admin' ? <img className='w-[45px] h-[45px] rounded-full overflow-hidden' src="/images/admin.png" alt="" /> : <img className='w-[45px] h-[45px] rounded-full overflow-hidden' src={seller.image} alt="" />
                             }
                         </div>
                     </div>

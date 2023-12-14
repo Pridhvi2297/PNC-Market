@@ -69,9 +69,7 @@ export const create_stripe_connect_account = createAsyncThunk(
         try {
             const { data: { url } } = await api.get(`/payment/create-stripe-connect-account`, { withCredentials: true })
             window.location.href = url
-           // return fulfillWithValue(data)
         } catch (error) {
-            //return rejectWithValue(error.response.data)
         }
     }
 )

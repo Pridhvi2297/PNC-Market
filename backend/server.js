@@ -142,6 +142,7 @@ app.use(cookieParser())
 
 
 app.use('/api', require('./routes/chatRoutes'))
+app.use('/api', require('./routes/paymentRoutes'))
 
 
 app.use('/api/home', require('./routes/home/homeRoutes'))

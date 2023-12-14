@@ -48,7 +48,7 @@ const Profile = () => {
         <div className='px-2 lg:px-7 py-5'>
             <div className='w-full flex flex-wrap'>
                 <div className='w-full md:w-6/12'>
-                    <div className='w-full p-4  bg-black rounded-md text-white'>
+                    <div className='w-full p-4  bg-[#283046] rounded-md text-[#d0d2d6]'>
                         <div className='flex justify-center items-center py-3'>
                             {
                                 userInfo?.image ? <label htmlFor="img" className='h-[210px] w-[300px] relative p-3 cursor-pointer overflow-hidden'>
@@ -60,7 +60,7 @@ const Profile = () => {
                                             </span>
                                         </div>
                                     }
-                                </label> : <label className='flex justify-center items-center flex-col h-[210px] w-[300px] cursor-pointer border border-dashed hover:border-indigo-500 border-white relative' htmlFor="img">
+                                </label> : <label className='flex justify-center items-center flex-col h-[210px] w-[300px] cursor-pointer border border-dashed hover:border-indigo-500 border-[#d0d2d6] relative' htmlFor="img">
                                     <span><BsImages /></span>
                                     <span>Select Image</span>
                                     {
@@ -110,19 +110,19 @@ const Profile = () => {
                                 !userInfo?.shopInfo ? <form onSubmit={add}>
                                     <div className='flex flex-col w-full gap-1 mb-3'>
                                         <label htmlFor="Shop">Shop Name</label>
-                                        <input value={state.shopName} onChange={inputHandle} className='px-4 py-2 focus:border-indigo-500 outline-none bg-black border border-slate-700 rounded-md text-white' type="text" placeholder='shop name' name='shopName' id='Shop' />
+                                        <input value={state.shopName} onChange={inputHandle} className='px-4 py-2 focus:border-indigo-500 outline-none bg-[#283046] border border-slate-700 rounded-md text-[#d0d2d6]' type="text" placeholder='shop name' name='shopName' id='Shop' />
                                     </div>
                                     <div className='flex flex-col w-full gap-1'>
-                                        <label htmlFor="div">Shop Address</label>
-                                        <input value={state.division} onChange={inputHandle} className='px-4 py-2 focus:border-indigo-500 outline-none bg-black border border-slate-700 rounded-md text-white' type="text" placeholder='division' name='division' id='div' />
+                                        <label htmlFor="div">Division</label>
+                                        <input value={state.division} onChange={inputHandle} className='px-4 py-2 focus:border-indigo-500 outline-none bg-[#283046] border border-slate-700 rounded-md text-[#d0d2d6]' type="text" placeholder='division' name='division' id='div' />
                                     </div>
                                     <div className='flex flex-col w-full gap-1 mb-3'>
-                                        <label htmlFor="district">State</label>
-                                        <input value={state.district} onChange={inputHandle} className='px-4 py-2 focus:border-indigo-500 outline-none bg-black border border-slate-700 rounded-md text-white' type="text" placeholder='district' name='district' id='district' />
+                                        <label htmlFor="district">District</label>
+                                        <input value={state.district} onChange={inputHandle} className='px-4 py-2 focus:border-indigo-500 outline-none bg-[#283046] border border-slate-700 rounded-md text-[#d0d2d6]' type="text" placeholder='district' name='district' id='district' />
                                     </div>
                                     <div className='flex flex-col w-full gap-1 mb-3'>
-                                        <label htmlFor="sub">County</label>
-                                        <input value={state.sub_district} onChange={inputHandle} className='px-4 py-2 focus:border-indigo-500 outline-none bg-black border border-slate-700 rounded-md text-white' type="text" placeholder='sub district' name='sub_district' id='sub' />
+                                        <label htmlFor="sub">Sub District</label>
+                                        <input value={state.sub_district} onChange={inputHandle} className='px-4 py-2 focus:border-indigo-500 outline-none bg-[#283046] border border-slate-700 rounded-md text-[#d0d2d6]' type="text" placeholder='sub district' name='sub_district' id='sub' />
                                     </div>
                                     <button disabled={loader ? true : false} className='bg-blue-500 w-[190px] hover:shadow-blue-500/20 hover:shadow-lg text-white rounded-md px-7 py-2 mb-3'>
                                         {
@@ -136,15 +136,15 @@ const Profile = () => {
                                         <span>{userInfo.shopInfo?.shopName}</span>
                                     </div>
                                     <div className='flex gap-2'>
-                                        <span>Address : </span>
+                                        <span>Division : </span>
                                         <span>{userInfo.shopInfo?.division}</span>
                                     </div>
                                     <div className='flex gap-2'>
-                                        <span>State : </span>
+                                        <span>District : </span>
                                         <span>{userInfo.shopInfo?.district}</span>
                                     </div>
                                     <div className='flex gap-2'>
-                                        <span>County : </span>
+                                        <span>Sub District : </span>
                                         <span>{userInfo.shopInfo?.sub_district}</span>
                                     </div>
                                 </div>
@@ -154,20 +154,20 @@ const Profile = () => {
                 </div>
                 <div className='w-full md:w-6/12'>
                     <div className='w-full pl-0 md:pl-7 mt-6 md:mt-0  '>
-                        <div className='bg-black rounded-md text-white p-4'>
-                            <h1 className='text-white text-lg mb-3 font-semibold'>Change Password</h1>
+                        <div className='bg-[#283046] rounded-md text-[#d0d2d6] p-4'>
+                            <h1 className='text-[#d0d2d6] text-lg mb-3 font-semibold'>Change Password</h1>
                             <form>
                                 <div className='flex flex-col w-full gap-1 mb-3'>
                                     <label htmlFor="email">Email</label>
-                                    <input className='px-4 py-2 focus:border-indigo-500 outline-none bg-black border border-slate-700 rounded-md text-white' type="email" placeholder='email' name='email' id='email' />
+                                    <input className='px-4 py-2 focus:border-indigo-500 outline-none bg-[#283046] border border-slate-700 rounded-md text-[#d0d2d6]' type="email" placeholder='email' name='email' id='email' />
                                 </div>
                                 <div className='flex flex-col w-full gap-1'>
                                     <label htmlFor="o_password">Old Password</label>
-                                    <input className='px-4 py-2 focus:border-indigo-500 outline-none bg-black border border-slate-700 rounded-md text-white' type="password" placeholder='old password' name='old_password' id='o_password' />
+                                    <input className='px-4 py-2 focus:border-indigo-500 outline-none bg-[#283046] border border-slate-700 rounded-md text-[#d0d2d6]' type="password" placeholder='old password' name='old_password' id='o_password' />
                                 </div>
                                 <div className='flex flex-col w-full gap-1'>
                                     <label htmlFor="n_password">New Password</label>
-                                    <input className='px-4 py-2 focus:border-indigo-500 outline-none bg-black border border-slate-700 rounded-md text-white' type="password" placeholder='new password' name='new_password' id='n_password' />
+                                    <input className='px-4 py-2 focus:border-indigo-500 outline-none bg-[#283046] border border-slate-700 rounded-md text-[#d0d2d6]' type="password" placeholder='new password' name='new_password' id='n_password' />
                                 </div>
                                 <button className='bg-blue-500 hover:shadow-blue-500/50 hover:shadow-lg text-white rounded-md px-7 py-2 mt-5 '>Submit</button>
                             </form>
