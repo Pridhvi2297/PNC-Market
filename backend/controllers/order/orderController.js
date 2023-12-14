@@ -8,7 +8,8 @@ const { mongo: { ObjectId } } = require('mongoose')
 const { responseReturn } = require('../../utiles/response')
 
 const moment = require('moment')
-// const stripe = require('stripe')('sk_test_51OL0XOG6sJWTPliWcgntdqMCqYw2cd0uV92M1IioNUjE3rQQotHLFmxY0CQgd3IxNsxs2WkHxYYRGn21PSUCqhm200dxwzpyFB')
+const stripe = require('stripe')('sk_test_51OL0XOG6sJWTPliWcgntdqMCqYw2cd0uV92M1IioNUjE3rQQotHLFmxY0CQgd3IxNsxs2WkHxYYRGn21PSUCqhm200dxwzpyFB')
+
 
 class orderController {
 
@@ -84,7 +85,7 @@ class orderController {
                     products: storePro,
                     price: pri,
                     payment_status: 'unpaid',
-                    shippingInfo: 'Dhaka myshop Warehouse',
+                    shippingInfo: 'PNC Warehouse',
                     delivery_status: 'pending',
                     date: tempDate
                 })
@@ -310,22 +311,22 @@ class orderController {
         }
     }
 
-    // create_payment = async (req, res) => {
-    //     const { price } = req.body
+    create_payment = async (req, res) => {
+        const { price } = req.body
 
-    //     try {
-    //         const payment = await stripe.paymentIntents.create({
-    //             amount: price * 100,
-    //             currency: 'usd',
-    //             automatic_payment_methods: {
-    //                 enabled: true
-    //             }
-    //         })
-    //         responseReturn(res, 200, { clientSecret: payment.client_secret })
-    //     } catch (error) {
-    //         console.log(error.message)
-    //     }
-    // }
+        try {
+            const payment = await stripe.paymentIntents.create({
+                amount: price * 100,
+                currency: 'usd',
+                automatic_payment_methods: {
+                    enabled: true
+                }
+            })
+            responseReturn(res, 200, { clientSecret: payment.client_secret })
+        } catch (error) {
+            console.log(error.message)
+        }
+    }
 
     order_confirm = async (req, res) => {
         const { orderId } = req.params

@@ -20,6 +20,7 @@ import Orders from "./components/dashboard/Orders";
 import Wishlist from "./components/dashboard/Wishlist";
 import Order from './components/dashboard/Order';
 import Chat from "./components/dashboard/Chat";
+import ConfirmOrder from "./pages/ConfirmOrder";
 
 
 export default function App() {
@@ -40,6 +41,8 @@ export default function App() {
         <Route path="/product/details/:slug" element={<ProductDetails />} />
         <Route path="/shipping" element={<Shipping />} />
         <Route path="/payment" element={<Payment />} />
+        <Route path='/order/confirm?' element={<ConfirmOrder />} />
+
 
         <Route path="/dashboard" element={<ProtectUser />}>
           <Route path="" element={<Dashboard />}>
