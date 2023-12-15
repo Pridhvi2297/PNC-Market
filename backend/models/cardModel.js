@@ -1,18 +1,23 @@
-const { Schema, model } = require('mongoose')
+const { Schema, model } = require('mongoose');
 
+// Define the schema for card products
 const cardSchema = new Schema({
-    userId : {
-        type : Schema.ObjectId,
-        required : true
+    // User ID associated with the card, represented as a Schema ObjectId and is required
+    userId: {
+        type: Schema.ObjectId,
+        required: true
     },
-    productId : {
-        type : Schema.ObjectId,
-        required : true
+    // Product ID associated with the card, represented as a Schema ObjectId and is required
+    productId: {
+        type: Schema.ObjectId,
+        required: true
     },
-    quantity : {
-        type : Number,
-        required : true
-    }
-},{timestamps : true})
+    // Quantity of the product in the card, a number and required
+    quantity: {
+        type: Number,
+        required: true
+    },
+}, { timestamps: true });
 
-module.exports = model('cardProducts',cardSchema)
+// Create and export the model for card products
+module.exports = model('cardProducts', cardSchema);

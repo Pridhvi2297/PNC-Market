@@ -1,38 +1,48 @@
-const { Schema, model } = require('mongoose')
+const { Schema, model } = require('mongoose');
 
+// Define the schema for author orders
 const authorSchema = new Schema({
-    orderId : {
-        type : Schema.ObjectId,
-        required : true
+    // Order ID, represented as a Schema ObjectId and is required
+    orderId: {
+        type: Schema.ObjectId,
+        required: true
     },
-    sellerId : {
-        type : Schema.ObjectId,
-        required : true
+    // Seller ID, represented as a Schema ObjectId and is required
+    sellerId: {
+        type: Schema.ObjectId,
+        required: true
     },
-    products : {
-        type : Array,
-        required : true
+    // Array of products in the order, required
+    products: {
+        type: Array,
+        required: true
     },
-    price : {
-        type : Number,
-        required : true
+    // Price of the order, a number and required
+    price: {
+        type: Number,
+        required: true
     },
-    payment_status : {
-        type : String,
-        required : true
+    // Payment status of the order, a string and required
+    payment_status: {
+        type: String,
+        required: true
     },
-    shippingInfo : {
-        type : String,
-        required : true
+    // Shipping information, a string and required
+    shippingInfo: {
+        type: String,
+        required: true
     },
-    delivery_status : {
-        type : String,
-        required : true
+    // Delivery status of the order, a string and required
+    delivery_status: {
+        type: String,
+        required: true
     },
-    date : {
-        type : String,
-        required : true
+    // Date of the order, a string and required
+    date: {
+        type: String,
+        required: true
     },
-},{timestamps : true})
+}, { timestamps: true });
 
-module.exports = model('authorOrders',authorSchema)
+// Create and export the model for author orders
+module.exports = model('authorOrders', authorSchema);
