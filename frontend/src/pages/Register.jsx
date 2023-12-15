@@ -137,6 +137,17 @@ const Register = () => {
                   </Link>
                 </p>
               </div>
+              <div className="text-center text-slate-600 pt-1">
+                <p>
+                  <Link
+                  target="_black"
+                    className="text-blue-500 flex items-center justify-center"
+                    to="http://localhost:3001/login"
+                  >
+                    Login as Seller <FaArrowRightFromBracket className="ml-1" />
+                  </Link>
+                </p>
+              </div>
             </div>
             <div className="w-full h-full py-4 pr-4">
               <img

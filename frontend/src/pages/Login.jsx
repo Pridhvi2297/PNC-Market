@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import Headers from "../components/Headers";
 import Footer from "../components/Footer";
 import FadeLoader from "react-spinners/FadeLoader";
-import { FaSquareFacebook } from "react-icons/fa6";
+import { FaSquareFacebook, FaArrowRightFromBracket } from "react-icons/fa6";
 import { ImGooglePlus2 } from "react-icons/im";
 import { customer_login, messageClear } from "../store/reducers/authReducer";
 import toast from 'react-hot-toast'
@@ -116,6 +116,17 @@ const Login = () => {
                   New to PNC?{" "}
                   <Link className="text-blue-500" to="/register">
                     Create your PNC account
+                  </Link>
+                </p>
+              </div>
+              <div className="text-center text-slate-600 pt-1">
+                <p>
+                  <Link
+                  target="_black"
+                    className="text-blue-500 flex items-center justify-center"
+                    to="http://localhost:3001/login"
+                  >
+                    Login as Seller <FaArrowRightFromBracket className="ml-1" />
                   </Link>
                 </p>
               </div>
